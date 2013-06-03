@@ -212,6 +212,12 @@ function edd_get_ip() {
 function edd_get_currencies() {
 	$currencies = array(
 		'USD'  => __( 'US Dollars (&#36;)', 'edd' ),
+		
+		// ADD (Joel Pacheco)
+		// Compatibilidad con Bolívares
+		'Bs' => __('Bolívares (Bs)', 'edd'),
+		// DDA
+		
 		'EUR'  => __( 'Euros (&euro;)', 'edd' ),
 		'GBP'  => __( 'Pounds Sterling (&pound;)', 'edd' ),
 		'AUD'  => __( 'Australian Dollars (&#36;)', 'edd' ),
