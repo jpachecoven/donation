@@ -357,6 +357,10 @@ msgstr ""
 msgid "Enter your pledge amount"
 msgstr ""
 
+#: ../inc/crowdfunding.php:97 (JP)
+msgid "Or choose one from these options..."
+msgstr "O escoge una de estas opciones..."
+
 #: ../inc/crowdfunding.php:182
 #, php-format
 msgid "This %s has ended. No more pledges can be made."

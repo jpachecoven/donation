@@ -55,7 +55,12 @@ function atcf_shortcode_submit( $atts ) {
 ?>
 	<?php do_action( 'atcf_shortcode_submit_before', $atts, $campaign ); ?>
 	<form action="" method="post" class="atcf-submit-campaign" enctype="multipart/form-data">
-		<?php do_action( 'atcf_shortcode_submit_fields', $atts, $campaign ); ?>
+		
+		<!-- EDIT (Joel Pacheco) Encabezado antes de imprimir campos del formulario --> 
+		<h3 class="atcf-submit-section campaign-information"><?php _e( 'Campaign Information', 'atcf' ); ?></h3>
+		<!-- TIDE -->	
+			
+		<?php do_action( 'atcf_shortcode_submit_fields', $atts, $campaign ); // Imprimo campos del formulario ?>
 
 		<p class="atcf-submit-campaign-submit">
 			<button type="submit" name="submit" value="submit" class="button">
@@ -97,8 +102,6 @@ function atcf_shortcode_submit_field_title( $atts, $campaign ) {
 
 	$title = $atts[ 'previewing' ] ? $campaign->data->post_title : null;
 ?>
-	<h3 class="atcf-submit-section campaign-information"><?php _e( 'Campaign Information', 'atcf' ); ?></h3>
-
 	<p class="atcf-submit-title">
 		<label for="title"><?php _e( 'Title', 'atcf' ); ?></label>
 		<input type="text" name="title" id="title" value="<?php echo esc_attr( $title ); ?>">
@@ -230,7 +233,9 @@ function atcf_shortcode_submit_field_category( $atts, $campaign ) {
 	</p>
 <?php
 }
-add_action( 'atcf_shortcode_submit_fields', 'atcf_shortcode_submit_field_category', 40, 2 );
+// EDIT (Joel Pacheco) Subí la prioridad del campo 'Categoría' (40->5) para que aparezca primero en el formulario
+add_action( 'atcf_shortcode_submit_fields', 'atcf_shortcode_submit_field_category', 5, 2 );
+// TIDE
 
 /**
  * Campaign Description
@@ -309,7 +314,10 @@ function atcf_shortcode_submit_field_excerpt( $atts, $campaign ) {
 	</p>
 <?php
 }
-add_action( 'atcf_shortcode_submit_fields', 'atcf_shortcode_submit_field_excerpt', 60, 2 );
+
+// EDIT (Joel Pacheco) Subí la prioridad (60->15) al campo 'Resumen' para colocarlo luego del 'Título'
+add_action( 'atcf_shortcode_submit_fields', 'atcf_shortcode_submit_field_excerpt', 15, 2 );
+// TIDE
 
 /**
  * Campaign Images

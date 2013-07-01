@@ -93,6 +93,10 @@ function fundify_campaign_contribute_options( $prices, $type, $download_id ) {
 	$campaign = new ATCF_Campaign( $download_id );
 ?>
 	<div class="edd_price_options <?php echo $campaign->is_active() ? 'active' : 'expired'; ?>">
+		<!-- ADD -->
+		<br>
+		<h2><?php echo apply_filters( 'fundify_pledge_custom_title', __( 'Or choose one from these options...', 'fundify' ) ); ?></h2>	
+		<!-- DDA -->
 		<ul>
 			<?php foreach ( $prices as $key => $price ) : ?>
 				<?php
@@ -150,7 +154,6 @@ function fundify_campaign_contribute_custom_price() {
 	global $edd_options;
 ?>
 	<h2><?php echo apply_filters( 'fundify_pledge_custom_title', __( 'Enter your pledge amount', 'fundify' ) ); ?></h2>
-
 	<p class="fundify_custom_price_wrap">
 	<?php if ( ! isset( $edd_options['currency_position'] ) || $edd_options['currency_position'] == 'before' ) : ?>
 		<?php echo edd_currency_filter( '' ); ?><input type="text" name="fundify_custom_price" id="fundify_custom_price" value="" />
@@ -223,10 +226,9 @@ function fundify_edd_add_to_cart_item( $cart_item ) {
 	} else {
 		$custom_price = $_POST[ 'fundify_custom_price' ];
 	}
-
 	$custom_price = edd_sanitize_amount( $custom_price );
-	$custom_price = absint( $custom_price );
-
+	//$custom_price = absint( $custom_price );
+		
 	$price        = edd_get_cart_item_price( $cart_item[ 'id' ], $cart_item[ 'options' ] );
 
 	if ( $custom_price > $price ) {

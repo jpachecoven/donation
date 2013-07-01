@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Easy Digital Downloads\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-11 09:21-0300\n"
-"PO-Revision-Date: 2012-07-11 09:26-0300\n"
-"Last-Translator: Matt Varone <plugins@mattvarone.com>\n"
+"PO-Revision-Date: 2013-06-06 13:59-0430\n"
+"Last-Translator: Joel Pacheco <pg.joel@gmail.com>\n"
 "Language-Team: Matt Varone <contact@mattvarone.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: ARGENTINA\n"
+"Language: es_AR\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ../includes\n"
 "X-Poedit-SearchPath-2: ../includes/admin-pages\n"
@@ -26,7 +26,9 @@ msgstr "Codigo de descuento actualizado."
 
 #: ../includes/admin-notices.php:27
 msgid "There was a problem updating your discount code, please try again."
-msgstr "Ha ocurrido un problema al actualizar su codigo de descuento, por favor trate nuevamente"
+msgstr ""
+"Ha ocurrido un problema al actualizar su codigo de descuento, por favor "
+"trate nuevamente"
 
 #: ../includes/admin-notices.php:30
 msgid "The payment has been deleted."
@@ -37,7 +39,9 @@ msgid "The purchase receipt has been resent."
 msgstr "El recibo de compra ah sido reenviado."
 
 #: ../includes/admin-notices.php:49
-msgid "There seems to be an issue with the server. Please try again in a few minutes."
+msgid ""
+"There seems to be an issue with the server. Please try again in a few "
+"minutes."
 msgstr "Error en el sistema. Por favor trate nuevamente en unos minutos."
 
 #: ../includes/admin-pages.php:26
@@ -85,8 +89,7 @@ msgstr "Ah agregado %s con exito al su carro de compras."
 msgid "Checkout."
 msgstr "Caja."
 
-#: ../includes/cart-template.php:50
-#: ../includes/cart-template.php:53
+#: ../includes/cart-template.php:50 ../includes/cart-template.php:53
 msgid "Checkout"
 msgstr "Caja"
 
@@ -114,20 +117,16 @@ msgstr "Direccion de email"
 msgid "Email Address"
 msgstr "Dirección de Email"
 
-#: ../includes/checkout-template.php:139
-#: ../includes/checkout-template.php:140
-#: ../includes/checkout-template.php:355
-#: ../includes/checkout-template.php:356
+#: ../includes/checkout-template.php:139 ../includes/checkout-template.php:140
+#: ../includes/checkout-template.php:355 ../includes/checkout-template.php:356
 msgid "First Name"
 msgstr "Nombre"
 
-#: ../includes/checkout-template.php:143
-#: ../includes/checkout-template.php:359
+#: ../includes/checkout-template.php:143 ../includes/checkout-template.php:359
 msgid "Last name"
 msgstr "Apellido"
 
-#: ../includes/checkout-template.php:144
-#: ../includes/checkout-template.php:360
+#: ../includes/checkout-template.php:144 ../includes/checkout-template.php:360
 msgid "Last Name"
 msgstr "Apellido"
 
@@ -155,10 +154,9 @@ msgstr "Esconder Términos"
 msgid "Agree to Terms?"
 msgstr "Acepta los Términos?"
 
-#: ../includes/checkout-template.php:203
-#: ../includes/dashboard-columns.php:73
+#: ../includes/checkout-template.php:203 ../includes/dashboard-columns.php:73
 msgid "Purchase"
-msgstr "Comprar"
+msgstr "Donar"
 
 #: ../includes/checkout-template.php:210
 msgid "Go back"
@@ -264,14 +262,12 @@ msgstr "Crear una cuenta"
 msgid "(optional)"
 msgstr "(opcional)"
 
-#: ../includes/checkout-template.php:337
-#: ../includes/checkout-template.php:338
+#: ../includes/checkout-template.php:337 ../includes/checkout-template.php:338
 #: ../includes/checkout-template.php:385
 msgid "Username"
 msgstr "Nombre de Usuario"
 
-#: ../includes/checkout-template.php:341
-#: ../includes/checkout-template.php:342
+#: ../includes/checkout-template.php:341 ../includes/checkout-template.php:342
 #: ../includes/checkout-template.php:389
 msgid "Password"
 msgstr "Contraseña"
@@ -284,8 +280,7 @@ msgstr "Confirmar Contraseña"
 msgid "Password Again"
 msgstr "Reingresar Contraseña"
 
-#: ../includes/checkout-template.php:351
-#: ../includes/checkout-template.php:352
+#: ../includes/checkout-template.php:351 ../includes/checkout-template.php:352
 msgid "Email"
 msgstr "Email"
 
@@ -406,8 +401,12 @@ msgid "Dear"
 msgstr "Estimado"
 
 #: ../includes/email-template.php:176
-msgid "Thank you for your purchase. Please click on the link(s) below to download your files."
-msgstr "Gracias por su compra. Por favor haga click en/los enlace/s a continuacion para descargar sus archivos."
+msgid ""
+"Thank you for your purchase. Please click on the link(s) below to download "
+"your files."
+msgstr ""
+"Gracias por su compra. Por favor haga click en/los enlace/s a continuacion "
+"para descargar sus archivos."
 
 #: ../includes/email-template.php:295
 msgid "Default Template"
@@ -453,8 +452,7 @@ msgstr "Usuario"
 msgid "Status"
 msgstr "Estado"
 
-#: ../includes/export-functions.php:101
-#: ../includes/export-functions.php:109
+#: ../includes/export-functions.php:101 ../includes/export-functions.php:109
 msgid "none"
 msgstr "ninguno"
 
@@ -475,8 +473,7 @@ msgstr "Probar Pago"
 msgid "%s Performance in Sales"
 msgstr "Performance de %s en Ventas"
 
-#: ../includes/graphing.php:77
-#: ../includes/post-types.php:124
+#: ../includes/graphing.php:77 ../includes/post-types.php:124
 msgid "Download"
 msgstr "Descargar"
 
@@ -559,8 +556,7 @@ msgstr "Seleccione para activar precio variable."
 msgid "price option name"
 msgstr "nombre de la opcion de precio"
 
-#: ../includes/metabox.php:97
-#: ../includes/metabox.php:107
+#: ../includes/metabox.php:97 ../includes/metabox.php:107
 msgid "9.99"
 msgstr "9,99"
 
@@ -588,13 +584,11 @@ msgstr "Nombre del Archivo"
 msgid "File URL"
 msgstr "URL Archivo:"
 
-#: ../includes/metabox.php:168
-#: ../includes/metabox.php:187
+#: ../includes/metabox.php:168 ../includes/metabox.php:187
 msgid "file name"
 msgstr "nombre del archivo"
 
-#: ../includes/metabox.php:169
-#: ../includes/metabox.php:188
+#: ../includes/metabox.php:169 ../includes/metabox.php:188
 msgid "file url"
 msgstr "url del archivo"
 
@@ -602,13 +596,11 @@ msgstr "url del archivo"
 msgid "All Prices"
 msgstr "Todos los Precios"
 
-#: ../includes/metabox.php:178
-#: ../includes/metabox.php:189
+#: ../includes/metabox.php:178 ../includes/metabox.php:189
 msgid "Upload File"
 msgstr "Subir Archivo"
 
-#: ../includes/metabox.php:192
-#: ../includes/post-types.php:43
+#: ../includes/metabox.php:192 ../includes/post-types.php:43
 #: ../includes/post-types.php:81
 msgid "Add New"
 msgstr "Agregar Nuevo"
@@ -647,7 +639,8 @@ msgstr "Color del Boton"
 
 #: ../includes/metabox.php:267
 msgid "Choose the color of the purchase link, if button was selected above."
-msgstr "Elija el color del enlace de compra, si se selecciono la opcion de boton."
+msgstr ""
+"Elija el color del enlace de compra, si se selecciono la opcion de boton."
 
 #: ../includes/metabox.php:285
 msgid "Disable the purchase button?"
@@ -662,8 +655,14 @@ msgid "Notes"
 msgstr "Notas"
 
 #: ../includes/metabox.php:309
-msgid "The style options above do NOT reflect the style of short code. The short code allows you to place a purchase button for this download anywhere on the site."
-msgstr "Las opciones de estilo NO reflejan el estilo del shortcode. El shortcode le permite ubicar un boton de compra para esta descarga en cualquier lugar de su sitio."
+msgid ""
+"The style options above do NOT reflect the style of short code. The short "
+"code allows you to place a purchase button for this download anywhere on the "
+"site."
+msgstr ""
+"Las opciones de estilo NO reflejan el estilo del shortcode. El shortcode le "
+"permite ubicar un boton de compra para esta descarga en cualquier lugar de "
+"su sitio."
 
 #: ../includes/metabox.php:315
 msgid "This short code can be placed anywhere on your site"
@@ -685,8 +684,7 @@ msgstr "Log de Ventas"
 msgid "Each sale for this download is listed below."
 msgstr "Cada venta para esta descarga esta listada abajo."
 
-#: ../includes/metabox.php:460
-#: ../includes/metabox.php:552
+#: ../includes/metabox.php:460 ../includes/metabox.php:552
 msgid "Date:"
 msgstr "Fecha:"
 
@@ -702,8 +700,7 @@ msgstr "ID Compra:"
 msgid "No sales yet"
 msgstr "No se ha realizado ninguna venta"
 
-#: ../includes/metabox.php:492
-#: ../includes/metabox.php:589
+#: ../includes/metabox.php:492 ../includes/metabox.php:589
 msgid "Previous"
 msgstr "Anterior"
 
@@ -1004,8 +1001,7 @@ msgstr "Agregar Nueva Etiqueta"
 msgid "New Tag Name"
 msgstr "Nombre Nueva Etiqueta"
 
-#: ../includes/post-types.php:232
-#: ../includes/post-types.php:233
+#: ../includes/post-types.php:232 ../includes/post-types.php:233
 msgid "Download updated."
 msgstr "Descarga actualizada."
 
@@ -1061,8 +1057,7 @@ msgstr "Nombre de usuario invalido"
 msgid "You must register or login to complete your purchase"
 msgstr "Para completar su compra debe ingresar o registrarce"
 
-#: ../includes/process-purchase.php:364
-#: ../includes/process-purchase.php:508
+#: ../includes/process-purchase.php:364 ../includes/process-purchase.php:508
 msgid "Invalid email"
 msgstr "email invalido"
 
@@ -1070,8 +1065,7 @@ msgstr "email invalido"
 msgid "Email already used"
 msgstr "La casilla de email ya se encuentra en uso"
 
-#: ../includes/process-purchase.php:382
-#: ../includes/process-purchase.php:515
+#: ../includes/process-purchase.php:382 ../includes/process-purchase.php:515
 msgid "Enter an email"
 msgstr "Ingrese un email"
 
@@ -1079,8 +1073,7 @@ msgstr "Ingrese un email"
 msgid "Passwords don't match"
 msgstr "Las contraseñas no concuerdan"
 
-#: ../includes/process-purchase.php:408
-#: ../includes/process-purchase.php:473
+#: ../includes/process-purchase.php:408 ../includes/process-purchase.php:473
 msgid "Enter a password"
 msgstr "Ingrese una contraseña"
 
@@ -1097,8 +1090,14 @@ msgid "Test Mode"
 msgstr "Modo de prueba"
 
 #: ../includes/register-settings.php:42
-msgid "While in test mode no live transactions are processed. To fully use test mode, you must have a sandbox (test) account for the payment gateway you are testing."
-msgstr "El modo de prueba no procesa las transacciones. Para utilizar el modo de prueba debe tener una cuenta sandbox para la ouerta de pago que este probando."
+msgid ""
+"While in test mode no live transactions are processed. To fully use test "
+"mode, you must have a sandbox (test) account for the payment gateway you are "
+"testing."
+msgstr ""
+"El modo de prueba no procesa las transacciones. Para utilizar el modo de "
+"prueba debe tener una cuenta sandbox para la ouerta de pago que este "
+"probando."
 
 #: ../includes/register-settings.php:47
 msgid "Purchase Page"
@@ -1114,7 +1113,9 @@ msgstr "Compra de Exito"
 
 #: ../includes/register-settings.php:55
 msgid "This is the page buyers are sent to after completing their purchases"
-msgstr "Esta es la pagina donde se envia a los compradores luego de completar una compra"
+msgstr ""
+"Esta es la pagina donde se envia a los compradores luego de completar una "
+"compra"
 
 #: ../includes/register-settings.php:61
 msgid "Currency Settings"
@@ -1129,8 +1130,12 @@ msgid "Currency"
 msgstr "Moneda"
 
 #: ../includes/register-settings.php:68
-msgid "Choose your currency. Note that some payment gateways have currency restrictions."
-msgstr "Elija su moneda. Tenga en cuenta que algunos gateways tienen restricciones de moneda."
+msgid ""
+"Choose your currency. Note that some payment gateways have currency "
+"restrictions."
+msgstr ""
+"Elija su moneda. Tenga en cuenta que algunos gateways tienen restricciones "
+"de moneda."
 
 #: ../includes/register-settings.php:74
 msgid "Currency Position"
@@ -1182,8 +1187,12 @@ msgid "Display icons for the selected payment methods"
 msgstr "Mostrar iconos para los medios de pago seleccionados"
 
 #: ../includes/register-settings.php:112
-msgid "You will also need to configure your gateway settings if you are accepting credit cards"
-msgstr "Tambien deberá configurar los ajustes de la pasarela de pagos si elige aceptar tarjeta de credito"
+msgid ""
+"You will also need to configure your gateway settings if you are accepting "
+"credit cards"
+msgstr ""
+"Tambien deberá configurar los ajustes de la pasarela de pagos si elige "
+"aceptar tarjeta de credito"
 
 #: ../includes/register-settings.php:125
 msgid "PayPal Settings"
@@ -1206,40 +1215,61 @@ msgid "Alternate PayPal Purchase Verification"
 msgstr "Alternar la Verificacion de Compra de PayPal"
 
 #: ../includes/register-settings.php:139
-msgid "If payments are not getting marked as complete, then check this box. Note, this requires that buyers return to your site from PayPal."
-msgstr "Si los pagos no estan siendo marcados como completos marque esta opcion. Nota: requiere que los compradores regresen de PayPal a su sitio."
+msgid ""
+"If payments are not getting marked as complete, then check this box. Note, "
+"this requires that buyers return to your site from PayPal."
+msgstr ""
+"Si los pagos no estan siendo marcados como completos marque esta opcion. "
+"Nota: requiere que los compradores regresen de PayPal a su sitio."
 
 #: ../includes/register-settings.php:144
 msgid "Disable PayPal IPN Verification"
 msgstr "Desactivar la Verificacion de Compra de PayPal"
 
 #: ../includes/register-settings.php:145
-msgid "If payments are not getting marked as complete, then check this box. This forces the site to use a slightly less secure method of verifiyin purchases."
-msgstr "Si los pagos no estan siendo marcados como completos marque esta opcion. Esto fuerza al sitio a utilizar un metodo de verificacion de compra menos seguro."
+msgid ""
+"If payments are not getting marked as complete, then check this box. This "
+"forces the site to use a slightly less secure method of verifiyin purchases."
+msgstr ""
+"Si los pagos no estan siendo marcados como completos marque esta opcion. "
+"Esto fuerza al sitio a utilizar un metodo de verificacion de compra menos "
+"seguro."
 
 #: ../includes/register-settings.php:154
 msgid "Email Template"
 msgstr "Plantilla del Email"
 
 #: ../includes/register-settings.php:155
-msgid "Choose a template. Click \"Save Changes\" then \"Preview Purchase Receipt\" to see the new template."
-msgstr "Elija una plantilla. Grabe los cambios y seleccione Previsualizar El Recibo de Compra para ver la nueva plantilla."
+msgid ""
+"Choose a template. Click \"Save Changes\" then \"Preview Purchase Receipt\" "
+"to see the new template."
+msgstr ""
+"Elija una plantilla. Grabe los cambios y seleccione Previsualizar El Recibo "
+"de Compra para ver la nueva plantilla."
 
 #: ../includes/register-settings.php:167
 msgid "From Name"
 msgstr "Nombre De"
 
 #: ../includes/register-settings.php:168
-msgid "The name purchase receipts are said to come from. This should probably be your site or shop name."
-msgstr "El nombre de donde vendran los recibos. Probablemente el nombre de su sitio o tienda."
+msgid ""
+"The name purchase receipts are said to come from. This should probably be "
+"your site or shop name."
+msgstr ""
+"El nombre de donde vendran los recibos. Probablemente el nombre de su sitio "
+"o tienda."
 
 #: ../includes/register-settings.php:173
 msgid "From Email"
 msgstr "Email Envio"
 
 #: ../includes/register-settings.php:174
-msgid "Email to send purchase receipts from. This will act as the \"from\" and \"reply-to\" address."
-msgstr "Email que envia los recibos. Actua como direccion de \"from\" y \"reply-to\" ."
+msgid ""
+"Email to send purchase receipts from. This will act as the \"from\" and "
+"\"reply-to\" address."
+msgstr ""
+"Email que envia los recibos. Actua como direccion de \"from\" y \"reply-to"
+"\" ."
 
 #: ../includes/register-settings.php:179
 msgid "Purchase Email Subject"
@@ -1254,8 +1284,12 @@ msgid "Purchase Receipt"
 msgstr "Recibo de Compra"
 
 #: ../includes/register-settings.php:186
-msgid "Enter the email that is sent to users after completing a successful purchase. HTML is accepted. Available template tags:"
-msgstr "Ingrese el mail que es enviado a los usuarios despues de completar una compra exitosamente. Acepta HTML. Etiquetas de plantilla disponibles:"
+msgid ""
+"Enter the email that is sent to users after completing a successful "
+"purchase. HTML is accepted. Available template tags:"
+msgstr ""
+"Ingrese el mail que es enviado a los usuarios despues de completar una "
+"compra exitosamente. Acepta HTML. Etiquetas de plantilla disponibles:"
 
 #: ../includes/register-settings.php:187
 msgid "A list of download URLs for each download purchased"
@@ -1323,31 +1357,45 @@ msgstr "Descativar la compra para invidatos"
 
 #: ../includes/register-settings.php:232
 msgid "Require that users be logged-in to purchase files."
-msgstr "Requerir que los usuarios hallan ingresado a su cuenta para realizar una comra."
+msgstr ""
+"Requerir que los usuarios hallan ingresado a su cuenta para realizar una "
+"comra."
 
 #: ../includes/register-settings.php:237
 msgid "Show Register / Login Form?"
 msgstr "Mostrar formulario de  Registro / Ingreso "
 
 #: ../includes/register-settings.php:238
-msgid "Display the registration and login forms on the checkout page for non-logged-in users."
-msgstr "Mostrar los formularios de registro e ingreso en la pagina de Caja para los usuarios que no hallan ingresado al sistema."
+msgid ""
+"Display the registration and login forms on the checkout page for non-logged-"
+"in users."
+msgstr ""
+"Mostrar los formularios de registro e ingreso en la pagina de Caja para los "
+"usuarios que no hallan ingresado al sistema."
 
 #: ../includes/register-settings.php:243
 msgid "Download Link Expiration"
 msgstr "Expiracion del enlace de Descarga"
 
 #: ../includes/register-settings.php:244
-msgid "How long should download links be valid for? Default is 24 hours from the time they are generated. Enter a time in hours."
-msgstr "Cuan largo deben permanecer validos los enlaces de descarga? Por defecto son validos por 24hs. Ingrese el tiempo en horas."
+msgid ""
+"How long should download links be valid for? Default is 24 hours from the "
+"time they are generated. Enter a time in hours."
+msgstr ""
+"Cuan largo deben permanecer validos los enlaces de descarga? Por defecto son "
+"validos por 24hs. Ingrese el tiempo en horas."
 
 #: ../includes/register-settings.php:250
 msgid "Disable Redownload?"
 msgstr "Desactivar Volver a Descargar"
 
 #: ../includes/register-settings.php:251
-msgid "Check this if you do not want to allow users to redownload items from their purchase history."
-msgstr "Seleccione si no quiere permitir a los usuarios descargar nuevamente los items desde el historial de compras/"
+msgid ""
+"Check this if you do not want to allow users to redownload items from their "
+"purchase history."
+msgstr ""
+"Seleccione si no quiere permitir a los usuarios descargar nuevamente los "
+"items desde el historial de compras/"
 
 #: ../includes/register-settings.php:256
 msgid "Terms of Agreement"
@@ -1358,8 +1406,12 @@ msgid "Agree to Terms"
 msgstr "Acepte los Términos"
 
 #: ../includes/register-settings.php:263
-msgid "Check this to show an agree to terms on the checkout that users must agree to before purchasing."
-msgstr "Seleccione para mostrar un Aceptar Términos requerido para los compradores en el checkout."
+msgid ""
+"Check this to show an agree to terms on the checkout that users must agree "
+"to before purchasing."
+msgstr ""
+"Seleccione para mostrar un Aceptar Términos requerido para los compradores "
+"en el checkout."
 
 #: ../includes/register-settings.php:268
 msgid "Agree to Terms Label"
@@ -1375,7 +1427,8 @@ msgstr "Condiciones de Acuerdo"
 
 #: ../includes/register-settings.php:276
 msgid "If Agree to Terms is checked, enter the agreement terms here."
-msgstr "Si Aceptar los Terminos esta seleccionado, ingrese los terminos a aceptar."
+msgstr ""
+"Si Aceptar los Terminos esta seleccionado, ingrese los terminos a aceptar."
 
 #: ../includes/register-settings.php:302
 msgid "General Settings"
@@ -1437,13 +1490,11 @@ msgstr "Esta seguro que quiere eliminar este pago?"
 msgid "Download Name"
 msgstr "Nombre de Descarga"
 
-#: ../includes/shortcodes.php:65
-#: ../includes/shortcodes.php:152
+#: ../includes/shortcodes.php:65 ../includes/shortcodes.php:152
 msgid "Files"
 msgstr "Archivos"
 
-#: ../includes/shortcodes.php:103
-#: ../includes/shortcodes.php:180
+#: ../includes/shortcodes.php:103 ../includes/shortcodes.php:180
 msgid "No downloadable files found."
 msgstr "No se han encontrado archivos para descarga."
 
@@ -1523,8 +1574,7 @@ msgstr "Granito"
 msgid "You have already purchased this item, but you may purchase it again."
 msgstr "Usted ya ha comprado este item, pero puede comprarlo nuevamente."
 
-#: ../includes/thickbox.php:29
-#: ../includes/thickbox.php:123
+#: ../includes/thickbox.php:29 ../includes/thickbox.php:123
 #, php-format
 msgid "Insert %s"
 msgstr "Insert %s"
@@ -1540,7 +1590,9 @@ msgstr "Debe seleccionar una descarga"
 #: ../includes/thickbox.php:88
 #, php-format
 msgid "Use the form below to insert the short code for purchasing a %s"
-msgstr "Utilize el formulario a continuacion para ingresar el shortcode para la compra de una %s"
+msgstr ""
+"Utilize el formulario a continuacion para ingresar el shortcode para la "
+"compra de una %s"
 
 #: ../includes/thickbox.php:91
 #, php-format
@@ -1575,8 +1627,7 @@ msgstr "Carro de Descargas"
 msgid "Display the downloads shopping cart"
 msgstr "Mostrar el carro de descargas"
 
-#: ../includes/widgets.php:81
-#: ../includes/widgets.php:161
+#: ../includes/widgets.php:81 ../includes/widgets.php:161
 msgid "Title:"
 msgstr "Titulo:"
 
@@ -1783,7 +1834,8 @@ msgstr "Identificacion Compra"
 
 #: ../includes/admin-pages/reports.php:34
 msgid "Transactions created while in test mode are not included on this page."
-msgstr "Las transacciones creadas en modo de prueba no son incluidas en esta pagina."
+msgstr ""
+"Las transacciones creadas en modo de prueba no son incluidas en esta pagina."
 
 #: ../includes/admin-pages/settings.php:33
 msgid "General"
@@ -1842,8 +1894,14 @@ msgstr "Fecha Inicio"
 
 #: ../includes/admin-pages/forms/add-discount.php:61
 #: ../includes/admin-pages/forms/edit-discount.php:66
-msgid "Enter the start date for this discount code in the format of yyyy-mm-dd. For no start date, leave blank. If entered, the discount can only be used after or on this date."
-msgstr "Ingrese la fecha de inicio para este código de descuento en el formato aaaa-mm-dd. Dejar en blanco para utilizar sin fecha de inicio. Si se ingresa una fecha el descuento solo puede ser utilizado a partir de esta fecha."
+msgid ""
+"Enter the start date for this discount code in the format of yyyy-mm-dd. For "
+"no start date, leave blank. If entered, the discount can only be used after "
+"or on this date."
+msgstr ""
+"Ingrese la fecha de inicio para este código de descuento en el formato aaaa-"
+"mm-dd. Dejar en blanco para utilizar sin fecha de inicio. Si se ingresa una "
+"fecha el descuento solo puede ser utilizado a partir de esta fecha."
 
 #: ../includes/admin-pages/forms/add-discount.php:66
 #: ../includes/admin-pages/forms/edit-discount.php:71
@@ -1852,13 +1910,21 @@ msgstr "Fecha de expiracion"
 
 #: ../includes/admin-pages/forms/add-discount.php:70
 #: ../includes/admin-pages/forms/edit-discount.php:75
-msgid "Enter the expiration date for this discount code in the format of yyyy-mm-dd. For no expiration, leave blank"
-msgstr "Ingrese la fecha de expiracion para este codigo de ddescuento en el formato aaaa-mm-dd. Para no expiración, dejar en blanco."
+msgid ""
+"Enter the expiration date for this discount code in the format of yyyy-mm-"
+"dd. For no expiration, leave blank"
+msgstr ""
+"Ingrese la fecha de expiracion para este codigo de ddescuento en el formato "
+"aaaa-mm-dd. Para no expiración, dejar en blanco."
 
 #: ../includes/admin-pages/forms/add-discount.php:79
 #: ../includes/admin-pages/forms/edit-discount.php:84
-msgid "The maximum number of times this discount can be used. Leave blank for unlimited."
-msgstr "El máximo numero de veces que este código puede ser utilizado. Dejar en blanco para ilimitado."
+msgid ""
+"The maximum number of times this discount can be used. Leave blank for "
+"unlimited."
+msgstr ""
+"El máximo numero de veces que este código puede ser utilizado. Dejar en "
+"blanco para ilimitado."
 
 #: ../includes/admin-pages/forms/add-discount.php:87
 msgid "Add Discount Code"
@@ -1922,7 +1988,8 @@ msgid "Send Purchase Receipt"
 msgstr "Enviar el Recibo de Compra"
 
 #: ../includes/admin-pages/forms/edit-payment.php:68
-msgid "Check this box to send the purchase receipt, including all download links."
+msgid ""
+"Check this box to send the purchase receipt, including all download links."
 msgstr "Enviar un recivo de compra, incluyendo los enlaces de descargas."
 
 #: ../includes/admin-pages/forms/edit-payment.php:78

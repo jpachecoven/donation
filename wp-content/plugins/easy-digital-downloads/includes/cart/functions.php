@@ -210,9 +210,9 @@ function edd_cart_item_price( $item_id = 0, $options = array() ) {
 		}
 
 	}
-
+	
 	$price = edd_currency_filter( edd_format_amount( $price ) );
-
+	
 	return esc_html( $price . $label );
 }
 
@@ -237,6 +237,7 @@ function edd_get_cart_item_price( $item_id, $options = array(), $tax = true ) {
 	if ( $variable_pricing && ! empty( $options ) ) {
 		// If variable prices are enabled, retrieve the options
 		$prices = get_post_meta( $item_id, 'edd_variable_prices', true );
+		
 		if ( $prices ) {
 			$price = isset( $prices[ $options['price_id'] ] ) ? $prices[ $options['price_id'] ]['amount'] : $price;
 		}

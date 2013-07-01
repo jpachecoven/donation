@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AppThemer Crowdfunding\n"
-"POT-Creation-Date: 2013-06-02 10:27-0500\n"
-"PO-Revision-Date: 2013-06-03 15:56-0430\n"
+"POT-Creation-Date: 2013-06-03 15:59-0430\n"
+"PO-Revision-Date: 2013-06-04 13:23-0430\n"
 "Last-Translator: Joel Pacheco <pg.joel@gmail.com>\n"
 "Language-Team: Joel Pacheco <pg.joel@gmail.com>\n"
+"Language: Español\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +15,6 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: .\n"
-"Language: Español\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../crowdfunding.php:165
@@ -26,67 +26,67 @@ msgstr ""
 
 #: ../includes/campaign.php:89 ../includes/campaign.php:101
 msgid "Campaigns"
-msgstr ""
+msgstr "Campañas"
 
 #: ../includes/campaign.php:90
 msgid "Campaign"
-msgstr ""
+msgstr "Campaña"
 
 #: ../includes/campaign.php:91
 msgid "Add New"
-msgstr ""
+msgstr "Agregar nueva"
 
 #: ../includes/campaign.php:92
 msgid "Add New Campaign"
-msgstr ""
+msgstr "Agregar Nueva Campaña"
 
 #: ../includes/campaign.php:93
 msgid "Edit Campaign"
-msgstr ""
+msgstr "Editar Campaña"
 
 #: ../includes/campaign.php:94
 msgid "New Campaign"
-msgstr ""
+msgstr "Nueva Campaña"
 
 #: ../includes/campaign.php:95
 msgid "All Campaigns"
-msgstr ""
+msgstr "Todas las Campañas"
 
 #: ../includes/campaign.php:96
 msgid "View Campaign"
-msgstr ""
+msgstr "Ver Campaña"
 
 #: ../includes/campaign.php:97
 msgid "Search Campaigns"
-msgstr ""
+msgstr "Buscar Campañas"
 
 #: ../includes/campaign.php:98
 msgid "No Campaigns found"
-msgstr ""
+msgstr "No se encontraron resultados"
 
 #: ../includes/campaign.php:99
 msgid "No Campaigns found in Trash"
-msgstr ""
+msgstr "No se encontraron resultados en la papelera"
 
 #: ../includes/campaign.php:161 ../includes/shortcode-profile.php:80
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: ../includes/campaign.php:162
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../includes/campaign.php:163
 msgid "Backers"
-msgstr ""
+msgstr "Apoyo"
 
 #: ../includes/campaign.php:164
 msgid "Amount Funded"
-msgstr ""
+msgstr "Cantidad Recolectada"
 
 #: ../includes/campaign.php:165
 msgid "Days Remaining"
-msgstr ""
+msgstr "Días faltantes"
 
 #: ../includes/campaign.php:184
 #, php-format
@@ -149,7 +149,7 @@ msgstr ""
 #: ../includes/campaign.php:449 ../includes/shortcode-submit.php:393
 #: ../includes/shortcode-submit.php:423
 msgid "Limit"
-msgstr ""
+msgstr "Límite"
 
 #: ../includes/campaign.php:450
 msgid "Purchased"
@@ -670,99 +670,101 @@ msgstr ""
 #, php-format
 msgctxt "submit \"campaign\""
 msgid "Submit %s"
-msgstr ""
+msgstr "Registrar %s"
 
 #: ../includes/shortcode-submit.php:67
 msgid "Save and Preview"
-msgstr ""
+msgstr "Guardar y Previsualizar"
 
 #: ../includes/shortcode-submit.php:100
 msgid "Campaign Information"
-msgstr ""
+msgstr "Información de la Campaña"
 
-#: ../includes/shortcode-submit.php:103 ../includes/shortcode-submit.php:104
+#: ../includes/shortcode-submit.php:103
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: ../includes/shortcode-submit.php:127
 #, php-format
 msgid "Goal (%s)"
-msgstr ""
+msgstr "Meta a recaudar (%s)"
 
 #: ../includes/shortcode-submit.php:155
 msgid "Length (Days)"
-msgstr ""
+msgstr "Duración (días)"
 
 #: ../includes/shortcode-submit.php:184
 msgid "Funding Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../includes/shortcode-submit.php:184
 msgid "Learn More"
-msgstr ""
+msgstr "Saber más"
 
 #: ../includes/shortcode-submit.php:221
 msgid "Category"
-msgstr ""
+msgstr "Categoría"
 
 #: ../includes/shortcode-submit.php:245
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../includes/shortcode-submit.php:277
 msgid "Updates"
-msgstr ""
+msgstr "Actualizaciones"
 
 #: ../includes/shortcode-submit.php:307
 msgid "Excerpt"
-msgstr ""
+msgstr "Resumen del objetivo de la campaña"
 
 #: ../includes/shortcode-submit.php:326
 msgid "Featuerd Image"
-msgstr ""
+msgstr "Imagen característica"
 
 #: ../includes/shortcode-submit.php:351
 msgid "Featued Video URL"
-msgstr ""
+msgstr "Dirección URL del video"
 
 #: ../includes/shortcode-submit.php:369
 msgid "Backer Rewards"
-msgstr ""
+msgstr "Escalera de Donaciones"
 
 #: ../includes/shortcode-submit.php:372
 msgid "Collect shipping information on checkout."
-msgstr ""
+msgstr "Recolectar información de envío al finalizar la donación"
 
 #: ../includes/shortcode-submit.php:383 ../includes/shortcode-submit.php:413
 #, php-format
 msgid "Amount (%s)"
-msgstr ""
+msgstr "Cantidad (%s)"
 
 #: ../includes/shortcode-submit.php:388 ../includes/shortcode-submit.php:418
 msgid "Reward"
-msgstr ""
+msgstr "Significado del donativo"
 
 #: ../includes/shortcode-submit.php:419
 msgid "Description of reward for this level of contribution."
-msgstr ""
+msgstr "Ej. Equivale a un desayuno para nuestros niños especiales"
 
 #: ../includes/shortcode-submit.php:437
 msgid "+ <em>Add Reward</em>"
-msgstr ""
+msgstr "+ <em>Agregar Escalón</em>"
 
 #: ../includes/shortcode-submit.php:453
 msgid "Your Information"
-msgstr ""
+msgstr "Tu Información"
 
 #: ../includes/shortcode-submit.php:458
 msgid "Contact Email"
-msgstr ""
+msgstr "Correo de contacto"
 
 #: ../includes/shortcode-submit.php:460
 msgid ""
 "An account will be created for you with this email address. It must be "
 "active."
 msgstr ""
+"Se creará una cuenta con esta dirección de correo. Verifica que se encuentre "
+"activo."
 
 #: ../includes/shortcode-submit.php:463
 #, php-format
@@ -771,43 +773,46 @@ msgid ""
 "be associated with that account. Please <a href=\"%3$s\">log out</a> if you "
 "would like to make a %2$s under a new account."
 msgstr ""
+"<strong>Nota</strong>: Iniciaste sesión como %1$s. Esta %2$s estará asociada "
+"a esa cuenta de usuario. Por favor <a href=\"%3$s\">cierra tu sesión</a> si "
+"deseas crear una %2$s con otra cuenta de usuario distinta."
 
 #: ../includes/shortcode-submit.php:481
 msgid "Name/Organization Name"
-msgstr ""
+msgstr "Nombre / Organización"
 
 #: ../includes/shortcode-submit.php:498
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #: ../includes/shortcode-submit.php:532
 msgid "Success! Your campaign has been received. It will be reviewed shortly."
-msgstr ""
+msgstr "¡Felicitaciones! Hemos recibido tu propuesta para nuestra evaluación"
 
 #: ../includes/shortcode-submit.php:596
 msgid "Please agree to the Terms and Conditions"
-msgstr ""
+msgstr "Por favor, indique si está de acuerdo con los Términos y Condiciones"
 
 #: ../includes/shortcode-submit.php:600
 msgid "Please add a title to this campaign."
-msgstr ""
+msgstr "Por favor, introduzca un Título para la campaña"
 
 #: ../includes/shortcode-submit.php:606
 #, php-format
 msgid "Please enter a valid goal amount. All goals are set in the %s currency."
-msgstr ""
+msgstr "Por favor, ingrese un monto válido en %s"
 
 #: ../includes/shortcode-submit.php:629
 msgid "Please add content to this campaign."
-msgstr ""
+msgstr "Por favor, ingrese una descripción para la campaña"
 
 #: ../includes/shortcode-submit.php:637
 msgid "Please add a campaign image."
-msgstr ""
+msgstr "Por favor, asígnele una imagen a la campaña"
 
 #: ../includes/shortcode-submit.php:641
 msgid "Please add at least one reward to the campaign."
-msgstr ""
+msgstr "Por favor, ingrese al menos un escalón de donación"
 
 #: ../includes/theme-stuff.php:117
 #, php-format

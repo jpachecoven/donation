@@ -209,7 +209,7 @@ Fundify.Checkout = (function($) {
 	    currentPrice,
 	    startPledgeLevel;
 
-	var formatCurrentSettings = {
+	var formatCurrencySettings = {
 		'decimalSymbol'    : fundifySettings.currency.decimal,
 		'digitGroupSymbol' : fundifySettings.currency.thousands,
 		'symbol'           : ''
@@ -219,14 +219,14 @@ Fundify.Checkout = (function($) {
 		customPriceField.keyup(function() {
 			submitButton.attr( 'disabled', true );
 
-			var price = $( this ).val();
+			var price = $( this ).asNumber ( formatCurrencySettings );
 
 			delay( function() {
 				Fundify.Checkout.setPrice( price );
 
 				if ( currentPrice < startPledgeLevel )
 					Fundify.Checkout.setPrice( startPledgeLevel );
-			}, 750);
+			}, 1000);
 		});
 
 		priceOptions.click(function(e) {
@@ -258,12 +258,16 @@ Fundify.Checkout = (function($) {
 		setPrice : function( price ) {
 			customPriceField
 				.val( price )
-				.formatCurrency( formatCurrentSettings );
-
+				.formatCurrency( formatCurrencySettings );
+			
+			currentPrice = price;
 			/** get formatted amount as number */
-			currentPrice = customPriceField.asNumber({
+			/*currentPrice = customPriceField.asNumber({
+				// ADD Joel Pacheco FIX para punto decimal
+				decimalSymbol : ',',
+				// DDA
 				parseType : 'float'
-			});
+			});*/
 
 			priceOptions.each( function( index ) {
 				var pledgeLevel = parseFloat( $(this).data( 'price' ) );
