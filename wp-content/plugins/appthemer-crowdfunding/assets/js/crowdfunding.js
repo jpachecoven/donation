@@ -82,5 +82,5 @@ var CrowdFunding = (function($) {
 }(jQuery));
 
 jQuery(document).ready(function($) {
-	CrowdFunding.init();
+	CrowdFunding.init();		
 });

@@ -46,9 +46,14 @@ add_shortcode( 'appthemer_crowdfunding_register', 'atcf_shortcode_register' );
 function atcf_shortcode_register_form() {
 	global $edd_options;
 ?>
-	<p class="atcf-register-name">
-		<label for="user_nicename"><?php _e( 'Your Name', 'atcf' ); ?></label>
-		<input type="text" name="displayname" id="displayname" class="input" value="" />
+	<p class="atcf-register-first-name">
+		<label for="user_nicename"><?php _e( 'First Name', 'atcf' ); ?></label>
+		<input type="text" name="first_name" id="first_name" class="input" value="" />
+	</p>
+	
+	<p class="atcf-register-last-name">
+		<label for="user_nicename"><?php _e( 'Last Name', 'atcf' ); ?></label>
+		<input type="text" name="last_name" id="last_name" class="input" value="" />
 	</p>
 
 	<p class="atcf-register-email">
@@ -66,12 +71,64 @@ function atcf_shortcode_register_form() {
 		<input type="password" name="user_pass" id="user_pass" class="input" value="" />
 	</p>
 	
+	<p class="atcf-register-select">
+		<label for="user_joining_as"><?php _e( 'Joining as', 'atcf' ); ?></label>
+			<!-- <label for="user_individual"><?php _e( 'Individual', 'atcf' ); ?></label>
+			<input checked="true" name="user_joining_as" id="user_individual" type="radio" value="Individual" />
+			<label for="user_organization"><?php _e( 'Organization', 'atcf' ); ?></label>
+			<input checked="true" name="user_joining_as" id="user_organization" type="radio" value="Organization" /> -->
+		<select name="user_joining_as" id="user_joining_as" class="select">
+			<option value="Individual" selected="true"><?php _e( 'Individual', 'atcf' ); ?></option>
+			<option value="Organization"><?php _e( 'Organization', 'atcf' ); ?></option>
+		</select>
+	</p>
+	
+	<p class="atcf-register-rif organization">
+		<label for="user_rif"><?php _e( 'RIF', 'atcf' ); ?></label>
+		<input type="text" name="user_rif" id="user_rif" class="input" value="" />
+	</p>
+	
+	<p class="atcf-register-orgname organization">
+		<label for="user_orgname"><?php _e( 'Org Name', 'atcf' ); ?></label>
+		<input type="text" name="user_orgname" id="user_orgname" class="input" value="" />
+	</p>
+	
+	<p class="atcf-register-orgaddress organization">
+		<label for="user_orgaddress"><?php _e( 'Address', 'atcf' ); ?></label>
+		<input type="text" name="user_address" id="user_address" class="input" value="" />
+	</p>
+	
+	<p class="atcf-register-zip organization">
+		<label for="user_zip"><?php _e( 'ZIP', 'atcf' ); ?></label>
+		<input type="text" name="user_zip" id="user_zip" class="input" value="" />
+	</p>
+	
+	<p class="atcf-register-phone organization">
+		<label for="user_phone"><?php _e( 'Phone', 'atcf' ); ?></label>
+		<input type="text" name="user_phone" id="user_phone" class="input" value="" />
+	</p>
+		
 	<p class="atcf-register-submit">
 		<input type="submit" name="submit" id="submit" class="<?php echo apply_filters( 'atcf_shortcode_register_button_class', 'button-primary' ); ?>" value="<?php _e( 'Register', 'atcf' ); ?>" />
 		<input type="hidden" name="action" value="atcf-register-submit" />
 		<?php wp_nonce_field( 'atcf-register-submit' ); ?>
 	</p>
+	
+	<script>
+		var $ = jQuery;
+		$('.organization').hide();
+		$('#user_joining_as').change(function() {		
+			user_type = $('#user_joining_as').val();
+			if (user_type == "Organization") {
+				$(".organization").show ( 800 );
+			} else {
+				$(".organization").hide ( 800 );
+			}		
+		});	
+	</script>
 <?php
+	//$crowdfunding = crowdfunding();
+	//wp_enqueue_script( 'atcf-scripts', $crowdfunding->plugin_url . '/assets/js/crowdfunding.js', 'jquery');
 }
 add_action( 'atcf_shortcode_register', 'atcf_shortcode_register_form' );
 
@@ -93,11 +150,44 @@ function atcf_registration_handle() {
 		return;
 
 	$errors   = new WP_Error();
-
-	$nicename = isset( $_POST[ 'displayname' ] ) ? esc_attr( $_POST[ 'displayname' ] ) : null;
+	
+	//$nicename = isset( $_POST[ 'displayname' ] ) ? esc_attr( $_POST[ 'displayname' ] ) : null;
 	$email    = isset( $_POST[ 'user_email' ] ) ? esc_attr( $_POST[ 'user_email' ] ) : null;
 	$username = isset( $_POST[ 'user_login' ] ) ? esc_attr( $_POST[ 'user_login' ] ) : null;
 	$password = isset( $_POST[ 'user_pass' ] ) ? esc_attr( $_POST[ 'user_pass' ] ) : null;
+
+	// ADD New fields - Joel Pacheco
+	$first_name = isset( $_POST[ 'first_name' ] ) ? esc_attr( $_POST[ 'first_name' ] ) : null;
+	$last_name = isset( $_POST[ 'last_name' ] ) ? esc_attr( $_POST[ 'last_name' ] ) : null;
+	$joining_as = isset( $_POST[ 'user_joining_as' ] ) ? esc_attr( $_POST[ 'user_joining_as' ] ) : null;
+	
+	$fields = array(
+		'first_name' 		   => $first_name,
+		'last_name' 		   => $last_name,
+		'type'			   	   => $joining_as,
+	);
+	
+	if ($joining_as == "Organization") {
+			
+		$rif = isset( $_POST[ 'user_rif' ] ) ? esc_attr( $_POST[ 'user_rif' ] ) : null;
+		$orgname = isset( $_POST[ 'user_orgname' ] ) ? esc_attr( $_POST[ 'user_orgname' ] ) : null;
+		$address = isset( $_POST[ 'user_address' ] ) ? esc_attr( $_POST[ 'user_address' ] ) : null;
+		$zip = isset( $_POST[ 'user_zip' ] ) ? esc_attr( $_POST[ 'user_zip' ] ) : null;
+		$phone = isset( $_POST[ 'user_phone' ] ) ? esc_attr( $_POST[ 'user_phone' ] ) : null;
+		
+		$defaults = array(
+		'rif'			       => $rif,
+		'orgname'			   => $orgname,
+		'address'			   => $address,
+		'zip'				   => $zip,
+		'phone'				   => $phone,	
+		);
+		
+		$fields = wp_parse_args($fields, $defaults);
+	}
+	// DDA
+	
+	$nicename = esc_attr($first_name . " " . $last_name);	
 
 	/** Check Email */
 	if ( empty( $email ) || ! is_email( $email ) )
@@ -128,6 +218,9 @@ function atcf_registration_handle() {
 		'display_name'         => $nicename,
 	) );
 
+	// ADD New fields - Joel Pacheco
+	atcf_register_user_meta( $user_id, $fields );
+	
 	do_action( 'atcf_register_process_after', $user_id, $_POST );
 
 	$redirect = apply_filters( 'atcf_register_redirect', isset ( $edd_options[ 'profile_page' ] ) ? get_permalink( $edd_options[ 'profile_page' ] ) : home_url() );
@@ -168,4 +261,24 @@ function atcf_register_user( $args = array() ) {
 	wp_new_user_notification( $user_id, $args[ 'user_pass' ] );
 
 	return $user_id;
+}
+
+/**
+ * Register a user meta.
+ *
+ * Adds extra user and organization data
+ * 
+ *
+ * @since Appthemer CrowdFunding 1.0 (Joel Pacheco)
+ *
+ * @return void
+ */
+function atcf_register_user_meta( $user_id, $args = array() ) {
+	
+	foreach ($args as $user_meta => $value) {
+		
+		update_user_meta($user_id, $user_meta, $value);
+		
+	}
+	
 }

@@ -137,7 +137,7 @@ function atcf_profile_info_fields_bio( $user, $userinfo ) {
 	</p>
 <?php
 }
-add_action( 'atcf_profile_info_fields', 'atcf_profile_info_fields_bio', 30, 2 );
+add_action( 'atcf_profile_info_fields', 'atcf_profile_info_fields_bio', 15, 2 );
 
 /**
  * Campaign History
