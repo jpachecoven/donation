@@ -57,7 +57,7 @@ function edd_format_amount( $amount ) {
 	$decimal_sep 	= ! empty( $edd_options['decimal_separator'] )   ? $edd_options['decimal_separator'] 	 : '.';
 
 	// Format the amount
-	if ( $decimal_sep == ',' && false !== ( $sep_found = strpos( $amount, $decimal_sep ) ) ) {
+	if ( $decimal_sep == ',' && false !== ( $found = strpos( $amount, $decimal_sep ) ) ) {
 		$whole = substr( $amount, 0, $sep_found );
 		$part = substr( $amount, $sep_found + 1, ( strlen( $amount ) - 1 ) );
 		$amount = $whole . '.' . $part;
@@ -67,7 +67,7 @@ function edd_format_amount( $amount ) {
 	if ( $thousands_sep == ',' && false !== ( $found = strpos( $amount, $thousands_sep ) ) ) {
 		$amount = str_replace( ',', '', $amount );
 	}
-		
+
 	$decimals  = apply_filters( 'edd_format_amount_decimals', 2 );
 	$formatted = number_format( $amount, $decimals, $decimal_sep, $thousands_sep );
 
@@ -112,7 +112,6 @@ function edd_currency_filter( $price ) {
 			case "BRL" : return $price . 'R&#36;'; break;
 			case "USD" :
 			case "AUD" :
-			case "BRL" :
 			case "CAD" :
 			case "HKD" :
 			case "MXN" :
