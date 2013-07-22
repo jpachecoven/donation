@@ -8,6 +8,8 @@
  * @since Fundify 1.0
  */
 
+global $wp_query;
+
 get_header(); 
 ?>
 
@@ -65,21 +67,22 @@ get_header();
 				<section>
 					<?php 
 						if ( fundify_is_crowdfunding()  ) :
-							$things = new ATCF_Campaign_Query();
+							$wp_query = new ATCF_Campaign_Query( array(
+								'paged' => ( get_query_var( 'page' ) ? get_query_var( 'page' ) : 1 )
+							) );
 						else :
-							$things = new WP_Query( array(
-								'posts_per_page' => get_option( 'posts_per_page' )
+							$wp_query = new WP_Query( array(
+								'posts_per_page' => get_option( 'posts_per_page' ),
+								'paged'          => ( get_query_var('page') ? get_query_var('page') : 1 )
 							) );
 						endif;
 
-						if ( $things->have_posts() ) :
+						if ( $wp_query->have_posts() ) :
 					?>
 
-						<?php while ( $things->have_posts() ) : $things->the_post(); ?>
+						<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 							<?php get_template_part( 'content', fundify_is_crowdfunding() ? 'campaign' : 'post' ); ?>
 						<?php endwhile; ?>
-
-						<?php do_action( 'fundify_loop_after' ); ?>
 
 					<?php else : ?>
 
@@ -87,6 +90,8 @@ get_header();
 
 					<?php endif; ?>
 				</section>
+
+				<?php do_action( 'fundify_loop_after' ); ?>
 			</div>
 		</div>
 		<!-- / container -->

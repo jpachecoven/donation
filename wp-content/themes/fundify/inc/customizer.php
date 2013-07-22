@@ -54,7 +54,7 @@ function fundify_get_theme_mods() {
 		'fundify_header_fixed'               => true,
 		'fundify_header_size'                => 'normal',
 		'fundify_hero_style'                 => 'grid',
-		'fundify_hero_text'                  => "The first Fundify WordPress theme\nWe help you fund your projects using WordPress\nStart funding your campaign today",
+		'fundify_hero_text'                  => "The first Fundify WordPress theme\nWe help you fund your campaigns using WordPress\nStart funding your campaign today",
 		'fundify_accent_color'               => '#04937f',
 		'fundify_footer_text_color'          => '#005a4d',
 		'fundify_footer_logo_image'          => get_template_directory_uri() . '/images/logo_f.png',
@@ -486,7 +486,6 @@ function fundify_header_css() {
 
 		#footer input[type="submit"] {
 			background-color: <?php echo fundify_theme_mod( 'footer_text_color' ); ?>;
-			box-shadow: 0 2px 0 #<?php echo fundify_darken_color( fundify_theme_mod( 'footer_text_color' ) ); ?>;
 		}
 	</style>
 

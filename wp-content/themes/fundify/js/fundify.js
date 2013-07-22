@@ -16,24 +16,6 @@ var delay = (function(){
 var Fundify = {}
 
 Fundify.App = (function($) {
-	var fancyBoxSettings = {
-		maxWidth   : 650,
-		width      : 650,
-		autoSize   : false,
-		height     : 'auto',
-		helpers    : {
-			overlay : {
-				css : {
-					'background' : 'rgba(32, 32, 32, .90)'
-				},
-				locked : false
-			}
-		},
-		beforeShow : function() {
-			$( '.fancybox-wrap' ).addClass( 'animated fadeInDown' );
-		}
-	}
-
 	function fixedHeader() {
 		fixHeader();
 
@@ -72,8 +54,9 @@ Fundify.App = (function($) {
 				e.preventDefault();
 				
 				Fundify.App.fancyBox( $(this), {
-					'href' : '#' + $(this).parent().attr( 'id' ) + '-wrap',
-					'type' : 'inline'
+					items: {
+						'src'  : '#' + $(this).parent().attr( 'id' ) + '-wrap'
+					}
 				});
 			});
 
@@ -81,8 +64,9 @@ Fundify.App = (function($) {
 				e.preventDefault();
 
 				Fundify.App.fancyBox( $(this ), {
-					'href' : '#' + $(this).attr( 'href' ),
-					'type' : 'inline'
+					items : {
+						'src'  : '#' + $(this).attr( 'href' )
+					}
 				} );
 			} );
 		},
@@ -103,10 +87,9 @@ Fundify.App = (function($) {
 		},
 
 		fancyBox : function( _this, args ) {
-			$.fancybox.open(
-				_this,
-				$.extend( fancyBoxSettings, args )
-			);
+			$.magnificPopup.open( $.extend( args, {
+				'type' : 'inline'
+			}) );
 		},
 
 		menuToggle : function() {
@@ -173,8 +156,9 @@ Fundify.Campaign = (function($) {
 			var price = $( this ).data( 'price' );
 
 			Fundify.App.fancyBox( $(this), {
-				href : '#contribute-modal-wrap',
-				type : 'inline',
+				items : {
+					src  : '#contribute-modal-wrap'
+				},
 				beforeShow : function() {
 					$( '#contribute-modal-wrap .edd_price_options' )
 						.find( 'li[data-price="' + price + '"]' )
@@ -219,10 +203,13 @@ Fundify.Checkout = (function($) {
 		customPriceField.keyup(function() {
 			submitButton.attr( 'disabled', true );
 
-			var price = $( this ).asNumber ( formatCurrencySettings );
+			var price = $( this ).asNumber( formatCurrencySettings );
 
 			delay( function() {
 				Fundify.Checkout.setPrice( price );
+
+				console.log( currentPrice );
+				console.log( startPledgeLevel );
 
 				if ( currentPrice < startPledgeLevel )
 					Fundify.Checkout.setPrice( startPledgeLevel );
@@ -246,8 +233,9 @@ Fundify.Checkout = (function($) {
 				e.preventDefault();
 
 				Fundify.App.fancyBox( $(this), {
-					'href' : '#contribute-modal-wrap',
-					'type' : 'inline'
+					items : {
+						'src' : '#contribute-modal-wrap'
+					}
 				});
 			});
 
@@ -259,15 +247,8 @@ Fundify.Checkout = (function($) {
 			customPriceField
 				.val( price )
 				.formatCurrency( formatCurrencySettings );
-			
+
 			currentPrice = price;
-			/** get formatted amount as number */
-			/*currentPrice = customPriceField.asNumber({
-				// ADD Joel Pacheco FIX para punto decimal
-				decimalSymbol : ',',
-				// DDA
-				parseType : 'float'
-			});*/
 
 			priceOptions.each( function( index ) {
 				var pledgeLevel = parseFloat( $(this).data( 'price' ) );

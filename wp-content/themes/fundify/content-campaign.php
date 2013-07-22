@@ -6,9 +6,7 @@
 
 global $post;
 
-$campaign = new ATCF_Campaign( $post );
-
-$age = date( 'U' ) - get_post_time( 'U', true, $post );
+$campaign = atcf_get_campaign( $post );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'item' ); ?>>
@@ -27,7 +25,13 @@ $age = date( 'U' ) - get_post_time( 'U', true, $post );
 		<ul>
 			<li><?php printf( __( '<strong>%s</strong> Funded', 'fundify' ), $campaign->percent_completed() ); ?></li>
 			<li><?php printf( __( '<strong>%s</strong> Pledged', 'fundify' ), $campaign->current_amount() ); ?></li>
-			<li><?php printf( __( '<strong>%s</strong> Days to Go', 'fundify' ), $campaign->days_remaining() ); ?></li>
+			<li>
+				<?php if ( $campaign->days_remaining() > 0 ) : ?>
+					<?php printf( __( '<strong>%s</strong> Days to Go', 'fundify' ), $campaign->days_remaining() ); ?>
+				<?php else : ?>
+					<?php printf( __( '<strong>%s</strong> Hours to Go', 'fundify' ), $campaign->hours_remaining() ); ?>
+				<?php endif; ?>
+			</li>
 		</ul>
 	</div>
 </article>

@@ -109,16 +109,16 @@ add_action( 'widgets_init', 'fundify_widgets_init' );
 function fundify_scripts() {
 	global $edd_options;
 
-	wp_enqueue_style( 'fundify-fonts', 'http://fonts.googleapis.com/css?family=Merriweather:400,700|Oswald|Lato:400,700' );
+	wp_enqueue_style( 'fundify-fonts', 'http://fonts.googleapis.com/css?family=Oswald|Lato:400,700' );
 	wp_enqueue_style( 'fundify-entypo', get_template_directory_uri() . '/css/entypo.css' );
 	wp_enqueue_style( 'fundify-style', get_stylesheet_uri() );
 	
 	if ( fundify_theme_mod( 'responsive' ) ) 
-		wp_enqueue_style( 'fundify-responsive', get_stylesheet_directory_uri() . '/css/responsive.css' );
+		wp_enqueue_style( 'fundify-responsive', get_template_directory_uri() . '/css/responsive.css' );
 
 	wp_enqueue_script( 'jquery-masonry' );
 	wp_enqueue_script( 'formatCurrency', get_template_directory_uri() . '/js/jquery.formatCurrency-1.4.0.pack.js', array( 'jquery' ), '1.4.1', true );
-	wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/js/jquery.fancybox.pack.js', array( 'jquery' ), '2.1.4', true );
+	wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/js/jquery.magnific-popup.min.js', array( 'jquery' ), '2.1.4', true );
 	wp_enqueue_script( 'crowdfunding-scripts', get_template_directory_uri() . '/js/fundify.js', array( 'fancybox', 'formatCurrency', 'jquery-masonry' ), 20130522, true );
 
 	$fundify_settings= array(
@@ -160,42 +160,6 @@ function fundify_inline_modals() {
 		get_template_part( 'modal', 'contribute' );
 }
 add_action( 'wp_footer', 'fundify_inline_modals' );
-
-/**
- * Campaign category classes
- *
- * @since Fundify 1.0
- *
- * @return void
- */
-function fundify_category_class( $classes ) {
-	global $post;
-
-	if ( fundify_is_crowdfunding() && 'download' == $post->post_type ) {
-		$campaign = new ATCF_Campaign( $post );
-
-		if ( is_front_page() || is_archive() ) {
-			$age = date( 'U' ) - get_post_time( 'U', true, $post );
-
-			if ( $age < ( 7 * 86400 ) )
-				$classes[] = 'new-this-week';
-		}
-
-		if ( $campaign->featured() )
-			$classes[] = 'staff-pick';
-		
-		$categories = get_the_terms( $post->ID, 'download_category' );
-
-		if ( ! $categories )
-			return $classes;
-
-		foreach( $categories as $category )
-			$classes[] = $category->slug;
-	}
-
-	return $classes;
-}
-add_filter( 'post_class', 'fundify_category_class' );
 
 /**
  * Body Class

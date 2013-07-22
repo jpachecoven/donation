@@ -63,12 +63,19 @@ get_header(); ?>
 
 						<li class="backer-count">
 							<h3><?php echo $campaign->backers_count(); ?></h3>
-							<p><?php echo _n( 'Backer', 'Backers', $campaign->backers_count(), 'number of backers', 'fundify' ); ?></p>
+							<p><?php echo _nx( 'Backer', 'Backers', $campaign->backers_count(), 'number of backers', 'fundify' ); ?></p>
 						</li>
+						<?php if ( ! $campaign->is_endless() ) : ?>
 						<li class="days-remaining">
-							<h3><?php echo $campaign->days_remaining(); ?></h3>
-							<p><?php echo _n( 'Day to Go', 'Days to Go', $campaign->days_remaining(), 'fundify' ); ?></p>
+							<?php if ( $campaign->days_remaining() > 0 ) : ?>
+								<h3><?php echo $campaign->days_remaining(); ?></h3>
+								<p><?php echo _n( 'Day to Go', 'Days to Go', $campaign->days_remaining(), 'fundify' ); ?></p>
+							<?php else : ?>
+								<h3><?php echo $campaign->hours_remaining(); ?></h3>
+								<p><?php echo _n( 'Hour to Go', 'Hours to Go', $campaign->hours_remaining(), 'fundify' ); ?></p>
+							<?php endif; ?>
 						</li>
+						<?php endif; ?>
 					</ul>
 
 					<div class="contribute-now">
@@ -78,14 +85,22 @@ get_header(); ?>
 							<a class="btn-green expired"><?php printf( __( '%s Expired', 'fundify' ), edd_get_label_singular() ); ?></a>
 						<?php endif; ?>
 					</div>
+
+					<?php
+						if ( ! $campaign->is_endless() ) :
+							$end_date = date_i18n( get_option( 'date_format' ), strtotime( $campaign->end_date() ) )
+					?>
 					
 					<p class="fund">
 						<?php if ( 'fixed' == $campaign->type() ) : ?>
-						<?php printf( __( 'This project will only be funded if at least %1$s is pledged by %2$s.', 'fundify' ), $campaign->goal(), $campaign->end_date() ); ?>
+						<?php printf( __( 'This %3$s will only be funded if at least %1$s is pledged by %2$s.', 'fundify' ), $campaign->goal(), $end_date, strtolower( edd_get_label_singular() ) ); ?>
 						<?php elseif ( 'flexible' == $campaign->type() ) : ?>
-						<?php printf( __( 'All funds will be collected on %1$s.', 'fundify' ), $campaign->end_date() ); ?>
+						<?php printf( __( 'All funds will be collected on %1$s.', 'fundify' ), $end_date ); ?>
+						<?php else : ?>
+						<?php printf( __( 'All pledges will be collected automatically until %1$s.', 'fundify' ), $end_date ); ?>
 						<?php endif; ?>
 					</p>
+					<?php endif; ?>
 				</div>
 			</article>
 
@@ -115,10 +130,12 @@ get_header(); ?>
 						<?php printf( __( 'Launched: %s', 'fundify' ), get_the_date() ); ?>
 					</div>
 
+					<?php if ( ! $campaign->is_endless() ) : ?>
 					<div class="funding-ends">
 						<i class="icon-clock"></i>
-						<?php printf( __( 'Funding Ends: %s', 'fundify' ), date( get_option( 'date_format' ), strtotime( $campaign->end_date() ) ) ); ?>
+						<?php printf( __( 'Funding Ends: %s', 'fundify' ), $end_date ); ?>
 					</div>
+					<?php endif; ?>
 
 					<?php if ( $campaign->location() ) : ?>
 					<div class="location">
@@ -181,6 +198,10 @@ get_header(); ?>
 							<?php foreach ( $backers as $backer ) : ?>
 								<?php
 									$payment_id = get_post_meta( $backer->ID, '_edd_log_payment_id', true );
+
+									if ( ! get_post( $payment_id ) )
+										continue;
+
 									$user_info  = edd_get_payment_meta_user_info( $payment_id );
 								?>
 

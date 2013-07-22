@@ -1,5 +1,31 @@
 == Changelog ==
 
+= 1.4.1: July 5, 2013 =
+
+* Fix: Make sure the menu reappears after resizing.
+* Fix: Allow longer titles to expand when in mobile.
+
+= 1.4: June 25, 2013 =
+
+* New: Use Magnific Popup instead of Fancybox due to licensing. http://dimsemenov.com/plugins/magnific-popup/
+* New: Custom pledge amounts can be turned off. You will need to manually toggle back on to add support back.
+* New: Countdown will show "Hours to Go" on the last day.
+* Fix: Consistency between terms. Use "Campaign" instead of "Projects"
+* Fix: Don't stretch single images in Firefox
+* Fix: Fix contact page template responsive functionality.
+* Fix: Empty search strings now direct back to the search page.
+* Fix: Better support for different currency symbols when pledging custom amounts.
+* Fix: Better menu support on mobile.
+
+= 1.3.1: June 7, 2013 =
+
+* New: Don't try to load responsive CSS in child theme. Child themes can deregister if needed.
+* Fix: Don't try to load pledges that no longer exist, to avoid breaking page.
+* Fix: Custom pledge amounts now more compatible with different currency separators. 
+* Fix: Responsive scrolling menu fixes.
+* Fix: Single image fix on homepage for Firefox.
+* Tweaks: Other various tweaks/improvements.
+
 = 1.3: June 1, 2013 =
 
 * Note: This is a large update to the theme's codebase, as well as visual styles. The new features

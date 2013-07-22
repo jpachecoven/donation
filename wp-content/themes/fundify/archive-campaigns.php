@@ -11,7 +11,7 @@ get_header(); ?>
 	<div class="title pattern-<?php echo rand(1,4); ?>">
 		<div class="container">
 			<?php if ( is_post_type_archive( 'download' ) ) : ?>
-				<h1><?php _e( 'Discover Projects', 'fundify' ); ?></h1>
+				<h1><?php printf( __( 'Discover %s', 'fundify' ), edd_get_label_plural() ); ?></h1>
 			<?php elseif ( is_tax( 'download_category' ) ) : ?>
 				<?php
 					global $wp_query;

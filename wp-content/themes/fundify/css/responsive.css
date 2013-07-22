@@ -1,3 +1,8 @@
+@media screen and (min-width: 1160px) {
+	#menu {
+		display: block !important;
+	}
+}
 
 @media screen and (max-width: 1160px) {
 	/**
@@ -15,9 +20,11 @@
 	/**
 	 * Menu
 	 */
-	#header {
+	body.fixed-header #header,
+	body #header {
 		padding: 30px 0;
-		position: relative;
+		position: absolute;
+		top: 0;
 	}
 
 	.menu-toggle {
@@ -132,7 +139,8 @@
 		height: 120px;
 	}
 
-	#home-page-featured h1 {
+	#home-page-featured h1,
+	#title-image h1 {
 		font-size: 20px;
 		line-height: 50px;
 		top: 26%;
@@ -210,13 +218,15 @@
 		height: 100px;
 	}
 
-	#home-page-featured h1 {
+	#home-page-featured h1,
+	#title-image h1 {
 		font-size: 20px;
 		line-height: 50px;
 		top: 20%;
 	}
 
-	.home-page-featured-single {
+	.home-page-featured-single,
+	#title-image {
 		min-height: 0;
 		height: 300px;
 	}
@@ -316,13 +326,15 @@
 		height: 75px;
 	}
 
-	#home-page-featured h1 {
+	#home-page-featured h1,
+	#title-image h1 {
 		font-size: 16px;
 		line-height: 40px;
 		top: 20%;
 	}
 
-	.home-page-featured-single {
+	.home-page-featured-single,
+	#title-image {
 		height: 225px;
 	}
 
@@ -378,6 +390,13 @@
 	}
 
 	/**
+	 * Contact
+	 */
+	.contacts h2 {
+		width: auto;
+	}
+
+	/**
 	 * Modals
 	 */
 	.fundify_custom_price_wrap,
@@ -412,14 +431,25 @@
 	/**
 	* Hero Grid
 	*/
-	#home-page-featured h1 {
+	#home-page-featured h1,
+	#title-image h1 {
 		top: 30%;
 		font: 700 14px/24px 'Lato', sans-serif;
 	}
 
-	#home-page-featured h1 span {
+	#home-page-featured h1 span,
+	#title-image h1 span {
 		display: inline;
 		margin: 0;
 		padding: 5px 0;
+	}
+
+	.title {
+		padding: 57px 0;
+		height: auto;
+	}
+
+	.title h1 {
+		padding: 0;
 	}
 }

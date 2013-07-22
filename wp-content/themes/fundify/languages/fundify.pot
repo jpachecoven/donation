@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fundify\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-27 14:18-0500\n"
-"PO-Revision-Date: 2013-05-27 14:19-0500\n"
+"POT-Creation-Date: 2013-07-05 11:19-0500\n"
+"PO-Revision-Date: 2013-07-05 11:19-0500\n"
 "Last-Translator: Spencer Finnell <spencerfinnell@gmail.com>\n"
 "Language-Team: AppThemer <support@appthemer.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,8 @@ msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
 #: ../archive-campaigns.php:14
-msgid "Discover Projects"
+#, php-format
+msgid "Discover %s"
 msgstr ""
 
 #: ../archive.php:37
@@ -57,7 +58,7 @@ msgstr ""
 msgid "Yearly Archives"
 msgstr ""
 
-#: ../author.php:19 ../content-campaign-author.php:24
+#: ../author.php:19 ../content-campaign-author.php:27
 #, php-format
 msgctxt "1: Number of Campaigns 2: EDD Object"
 msgid "Created %1$d Campaign"
@@ -89,15 +90,15 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: ../content-campaign-author.php:15
+#: ../content-campaign-author.php:12
 msgid "About the Author"
 msgstr ""
 
-#: ../content-campaign-author.php:27
+#: ../content-campaign-author.php:30
 msgid "View Profile"
 msgstr ""
 
-#: ../content-campaign-author.php:49
+#: ../content-campaign-author.php:55
 msgid "Ask Question"
 msgstr ""
 
@@ -109,26 +110,26 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: ../content-campaign-sort.php:26
+#: ../content-campaign-sort.php:27
 msgid "New this Week"
 msgstr ""
 
-#: ../content-campaign-sort.php:27
+#: ../content-campaign-sort.php:31
 msgid "Staff Picks"
 msgstr ""
 
-#: ../content-campaign.php:15 ../content-campaign.php:20
+#: ../content-campaign.php:13 ../content-campaign.php:18
 #: ../content-post.php:11 ../content-post.php:16 ../content.php:24
 #, php-format
 msgid "Permalink to %s"
 msgstr ""
 
-#: ../content-campaign.php:28 ../footer.php:41
+#: ../content-campaign.php:26 ../footer.php:41
 #, php-format
 msgid "<strong>%s</strong> Funded"
 msgstr ""
 
-#: ../content-campaign.php:29
+#: ../content-campaign.php:27
 #, php-format
 msgid "<strong>%s</strong> Pledged"
 msgstr ""
@@ -136,6 +137,11 @@ msgstr ""
 #: ../content-campaign.php:30
 #, php-format
 msgid "<strong>%s</strong> Days to Go"
+msgstr ""
+
+#: ../content-campaign.php:32
+#, php-format
+msgid "<strong>%s</strong> Hours to Go"
 msgstr ""
 
 #: ../content.php:17
@@ -168,7 +174,7 @@ msgid "Tags:"
 msgstr ""
 
 #: ../content.php:32 ../single-campaign-edit.php:15
-#: ../inc/template-tags.php:43
+#: ../inc/template-tags.php:63
 msgid "Edit"
 msgstr ""
 
@@ -249,7 +255,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: ../single-campaign.php:34 ../single-campaign.php:165
+#: ../single-campaign.php:34 ../single-campaign.php:182
 msgid "Updates"
 msgstr ""
 
@@ -271,56 +277,68 @@ msgid "Pledged of %s Goal"
 msgstr ""
 
 #: ../single-campaign.php:66
+msgctxt "number of backers"
 msgid "Backer"
 msgid_plural "Backers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../single-campaign.php:70
+#: ../single-campaign.php:72
 msgid "Day to Go"
 msgid_plural "Days to Go"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../single-campaign.php:76 ../single-campaign.php:102
+#: ../single-campaign.php:75
+msgid "Hour to Go"
+msgid_plural "Hours to Go"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../single-campaign.php:83 ../single-campaign.php:117
 msgid "Contribute Now"
 msgstr ""
 
-#: ../single-campaign.php:78
+#: ../single-campaign.php:85
 #, php-format
 msgid "%s Expired"
 msgstr ""
 
-#: ../single-campaign.php:84
+#: ../single-campaign.php:96
 #, php-format
-msgid "This project will only be funded if at least %1$s is pledged by %2$s."
+msgid "This %3$s will only be funded if at least %1$s is pledged by %2$s."
 msgstr ""
 
-#: ../single-campaign.php:86
+#: ../single-campaign.php:98
 #, php-format
 msgid "All funds will be collected on %1$s."
 msgstr ""
 
-#: ../single-campaign.php:115
+#: ../single-campaign.php:100
+#, php-format
+msgid "All pledges will be collected automatically until %1$s."
+msgstr ""
+
+#: ../single-campaign.php:130
 #, php-format
 msgid "Launched: %s"
 msgstr ""
 
-#: ../single-campaign.php:120
+#: ../single-campaign.php:136
 #, php-format
 msgid "Funding Ends: %s"
 msgstr ""
 
-#: ../single-campaign.php:132
+#: ../single-campaign.php:149
 msgid "Share this campaign"
 msgstr ""
 
-#: ../single-campaign.php:134
+#: ../single-campaign.php:151
 #, php-format
 msgid "Check out %s on %s! %s"
 msgstr ""
 
-#: ../single-campaign.php:177
+#: ../single-campaign.php:194
 msgid "No backers yet. Be the first!"
 msgstr ""
 
@@ -328,8 +346,8 @@ msgstr ""
 #, php-format
 msgid ""
 "<strong>Notice:</strong> To take advantage of all of the great features "
-"Fundify offers, please install the <a href=\"%s\">AppThemer Crowdfunding "
-"Plugin</a>. <a href=\"%s\" class=\"alignright\">Hide this message.</a>"
+"Fundify offers, please install the <a href=\"%s\">Crowdfunding by Astoundify "
+"plugin</a>. <a href=\"%s\" class=\"alignright\">Hide this message.</a>"
 msgstr ""
 
 #: ../inc/crowdfunding.php:121
@@ -339,8 +357,9 @@ msgstr ""
 
 #: ../inc/crowdfunding.php:124
 #, php-format
-msgid "%d Backer"
-msgid_plural "%d Backers"
+msgctxt "number of backers for pledge level"
+msgid "1 Backer"
+msgid_plural "%1$s Backers"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -357,13 +376,17 @@ msgstr ""
 msgid "Enter your pledge amount"
 msgstr ""
 
-#: ../inc/crowdfunding.php:97 (JP)
-msgid "Or choose one from these options..."
-msgstr "O escoge una de estas opciones..."
-
-#: ../inc/crowdfunding.php:182
+#: ../inc/crowdfunding.php:189
 #, php-format
 msgid "This %s has ended. No more pledges can be made."
+msgstr ""
+
+#: ../inc/crowdfunding.php:280
+msgid "Custom Pledging"
+msgstr ""
+
+#: ../inc/crowdfunding.php:281
+msgid "Allow arbitrary amounts to be pledged."
 msgstr ""
 
 #: ../inc/customizer.php:20
@@ -400,83 +423,95 @@ msgstr ""
 msgid "Hero Unit"
 msgstr ""
 
-#: ../inc/customizer.php:163 ../inc/customizer.php:300
+#: ../inc/customizer.php:162
+msgid "Style"
+msgstr ""
+
+#: ../inc/customizer.php:167
+msgid "Grid"
+msgstr ""
+
+#: ../inc/customizer.php:168
+msgid "Single"
+msgstr ""
+
+#: ../inc/customizer.php:179 ../inc/customizer.php:316
 msgid "Hero Text"
 msgstr ""
 
-#: ../inc/customizer.php:183
+#: ../inc/customizer.php:199
 msgid "Accent Color"
 msgstr ""
 
-#: ../inc/customizer.php:193
+#: ../inc/customizer.php:209
 msgid "Footer"
 msgstr ""
 
-#: ../inc/customizer.php:203
+#: ../inc/customizer.php:219
 msgid "Text Color"
 msgstr ""
 
-#: ../inc/customizer.php:215
+#: ../inc/customizer.php:231
 msgid "Logo Image"
 msgstr ""
 
-#: ../inc/customizer.php:227
+#: ../inc/customizer.php:243
 msgid "Background Color"
 msgstr ""
 
-#: ../inc/customizer.php:239
+#: ../inc/customizer.php:255
 msgid "Background Image"
 msgstr ""
 
-#: ../inc/customizer.php:250
+#: ../inc/customizer.php:266
 msgid "Background Repeat"
 msgstr ""
 
-#: ../inc/customizer.php:254
+#: ../inc/customizer.php:270
 msgid "No Repeat"
 msgstr ""
 
-#: ../inc/customizer.php:255
+#: ../inc/customizer.php:271
 msgid "Tile"
 msgstr ""
 
-#: ../inc/customizer.php:256
+#: ../inc/customizer.php:272
 msgid "Tile Horizontally"
 msgstr ""
 
-#: ../inc/customizer.php:257
+#: ../inc/customizer.php:273
 msgid "Tile Vertically"
 msgstr ""
 
-#: ../inc/customizer.php:267
+#: ../inc/customizer.php:283
 msgid "Background Position"
 msgstr ""
 
-#: ../inc/customizer.php:271
+#: ../inc/customizer.php:287
 msgid "Left"
 msgstr ""
 
-#: ../inc/customizer.php:272
+#: ../inc/customizer.php:288
 msgid "Center"
 msgstr ""
 
-#: ../inc/customizer.php:273
+#: ../inc/customizer.php:289
 msgid "Right"
 msgstr ""
 
-#: ../inc/customizer.php:290
+#: ../inc/customizer.php:306
 msgid "Contact Page"
 msgstr ""
 
-#: ../inc/customizer.php:313
+#: ../inc/customizer.php:329
 msgid "Page Subtitle"
 msgstr ""
 
-#: ../inc/customizer.php:326
+#: ../inc/customizer.php:342
 msgid "Contact Address"
 msgstr ""
 
-#: ../inc/customizer.php:339
+#: ../inc/customizer.php:355
 msgid "Map Image"
 msgstr ""
 
@@ -485,15 +520,15 @@ msgstr ""
 msgid "Page %s"
 msgstr ""
 
-#: ../inc/template-tags.php:26
+#: ../inc/template-tags.php:46
 msgid "Pingback:"
 msgstr ""
 
-#: ../inc/template-tags.php:26
+#: ../inc/template-tags.php:46
 msgid "(Edit)"
 msgstr ""
 
-#: ../inc/template-tags.php:36
+#: ../inc/template-tags.php:56
 #, php-format
 msgid "%s"
 msgstr ""

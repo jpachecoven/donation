@@ -44,6 +44,13 @@ function fundify_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'fundify_wp_title', 10, 2 );
 
+/**
+ * Post excerpt ellipses.
+ *
+ * @since unknown
+ *
+ * @return string
+ */
 function fundify_custom_excerpt_more( $more ) {
 	global $post;
 
@@ -54,30 +61,22 @@ function fundify_custom_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'fundify_custom_excerpt_more' );
 
+/**
+ * Random excerpt length.
+ *
+ * @since unknown
+ *
+ * @return int
+ */
 function fundify_excerpt_length( $length ) {
 	return rand(20, 40);
 }
 add_filter( 'excerpt_length', 'fundify_excerpt_length' );
 
-function fundify_darken_color( $color ) {
-	if ( ! preg_match( '/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i', $color, $parts ) )
-		return;
-
-	$out = '';
-
-	for( $i = 1; $i <= 3; $i++ ) {
-		$parts[$i] = hexdec( $parts[$i] );
-		$parts[$i] = round($parts[$i] * 70/100);
-		$out .= str_pad( dechex( $parts[$i] ), 2, '0', STR_PAD_LEFT );
-	}
-
-	return $out;
-}
-
 /**
  * Number of posts user has written.
  *
- * @since 3.0.0
+ * @since Fundify 1.3
  * @uses $wpdb WordPress database object for queries.
  *
  * @param int $userid User ID.
@@ -90,5 +89,22 @@ function fundify_count_user_campaigns( $userid ) {
 
 	$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts $where" );
 
-	return apply_filters('get_usernumposts', $count, $userid);
+	return apply_filters( 'fundify_get_usernumposts', $count, $userid );
 }
+
+/**
+ * If the search query is empty, still return the search page.
+ *
+ * @since Fundify 1.4
+ *
+ * @return object $query
+ */
+function fundify_search_query_filter($query) {
+	if ( isset( $_GET[ 's' ] ) && empty( $_GET[ 's' ] ) && $query->is_main_query() ) {
+		$query->is_search = true;
+		$query->set( 'post_type', isset ( $_GET[ 'type' ] ) ? $_GET[ 'type' ] : 'post' );
+	}  
+
+	return $query;
+}
+add_filter( 'pre_get_posts', 'fundify_search_query_filter' );
