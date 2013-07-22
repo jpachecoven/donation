@@ -125,7 +125,7 @@ function fundify_campaign_contribute_options( $prices, $type, $download_id ) {
 						?> <?php printf( __( 'Pledge %s', 'fundify' ), edd_currency_filter( edd_format_amount( $amount ) ) ); ?></label></h3>
 
 						<div class="backer-count">
-							<i class="icon-user"></i> <?php printf( _n( '%d Backer', '%d Backers', $bought, 'number of backers', 'fundify' ), $bought ); ?>
+							<i class="icon-user"></i> <?php printf( _nx( '1 Backer', '%1$s Backers', $bought, 'number of backers for pledge level', 'fundify' ), $bought ); ?>
 
 							<?php if ( '' != $limit && ! $allgone ) : ?>
 								<small class="limit"><?php printf( __( 'Limited (%d of %d left)', 'fundify' ), $limit - $bought, $limit ); ?></small>
@@ -146,7 +146,7 @@ add_action( 'atcf_campaign_contribute_options', 'fundify_campaign_contribute_opt
 /**
  * Custom price field
  *
- * @since Campaignify 1.0
+ * @since Fundify 1.3
  *
  * @return void
  */
@@ -154,11 +154,19 @@ function fundify_campaign_contribute_custom_price() {
 	global $edd_options;
 ?>
 	<h2><?php echo apply_filters( 'fundify_pledge_custom_title', __( 'Enter your pledge amount', 'fundify' ) ); ?></h2>
+
 	<p class="fundify_custom_price_wrap">
 	<?php if ( ! isset( $edd_options['currency_position'] ) || $edd_options['currency_position'] == 'before' ) : ?>
-		<?php echo edd_currency_filter( '' ); ?><input type="text" name="fundify_custom_price" id="fundify_custom_price" value="" />
+		<span class="currency left">
+			<?php echo edd_currency_filter( '' ); ?>
+		</span>
+
+		<input type="text" name="fundify_custom_price" id="fundify_custom_price" class="left" value="" />
 	<?php else : ?>
-		<input type="text" name="fundify_custom_price" id="fundify_custom_price" value="" /><?php echo edd_currency_filter( '' ); ?>
+		<input type="text" name="fundify_custom_price" id="fundify_custom_price" class="right" value="" />
+		<span class="currency right">
+			<?php echo edd_currency_filter( '' ); ?>
+		</span>
 	<?php endif; ?>
 	</p>
 <?php
@@ -172,7 +180,7 @@ add_action( 'edd_purchase_link_top', 'fundify_campaign_contribute_custom_price',
  * but the lack of form around them messes with the styling a bit, and we
  * lose our header. This fixes that. 
  *
- * @since Campaignify 1.0
+ * @since Fundify 1.3
  *
  * @param object $campaign The current campaign.
  * @return void
@@ -190,7 +198,7 @@ add_action( 'fundify_contribute_modal_top', 'fundify_contribute_modal_top_expire
 /**
  * Expired campaign shim.
  *
- * @since Campaignify 1.0
+ * @since Fundify 1.3
  *
  * @param object $campaign The current campaign.
  * @return void
@@ -212,7 +220,7 @@ add_action( 'fundify_contribute_modal_bottom', 'fundify_contribute_modal_bottom_
  * the differene in the cart item meta, so it can be added to
  * the total in the future.
  *
- * @since Campaignify 1.0
+ * @since Fundify 1.3
  *
  * @param array $cart_item The current cart item to be added.
  * @return array $cart_item The modified cart item.
@@ -226,9 +234,9 @@ function fundify_edd_add_to_cart_item( $cart_item ) {
 	} else {
 		$custom_price = $_POST[ 'fundify_custom_price' ];
 	}
+
 	$custom_price = edd_sanitize_amount( $custom_price );
-	//$custom_price = absint( $custom_price );
-		
+	
 	$price        = edd_get_cart_item_price( $cart_item[ 'id' ], $cart_item[ 'options' ] );
 
 	if ( $custom_price > $price ) {
@@ -246,7 +254,7 @@ add_filter( 'edd_ajax_pre_cart_item_template', 'fundify_edd_add_to_cart_item' );
  * Calculate the cart item total based on the existence of
  * an additional pledge amount.
  *
- * @since Campaignify 1.0
+ * @since Fundify 1.3
  *
  * @param int $price The current price.
  * @param int $item_id The ID of the cart item.
@@ -261,3 +269,38 @@ function fundify_edd_cart_item_price( $price, $item_id, $options = array() ) {
 	return $price;
 }
 add_filter( 'edd_cart_item_price', 'fundify_edd_cart_item_price', 10, 3 );
+
+/**
+ * Toggle custom pledge on/off
+ *
+ * @since Fundify 1.4
+ * 
+ * @param $settings
+ * @return $settings
+ */
+function fundify_crowdfunding_settings( $settings ) {
+	$settings[ 'atcf_settings_custom_pledge' ] = array(
+		'id'      => 'atcf_settings_custom_pledge',
+		'name'    => __( 'Custom Pledging', 'atcf' ),
+		'desc'    => __( 'Allow arbitrary amounts to be pledged.', 'atcf' ),
+		'type'    => 'checkbox',
+		'std'     => 1
+	);
+
+	return $settings;
+}
+add_filter( 'edd_settings_general', 'fundify_crowdfunding_settings', 100 );
+
+function fundify_disable_custom_pledging() {
+	global $edd_options;
+
+	if ( isset ( $edd_options[ 'atcf_settings_custom_pledge' ] ) )
+		return;
+
+	remove_action( 'edd_purchase_link_top', 'fundify_campaign_contribute_custom_price', 5 );
+	remove_filter( 'edd_add_to_cart_item', 'fundify_edd_add_to_cart_item' );
+	remove_filter( 'edd_ajax_pre_cart_item_template', 'fundify_edd_add_to_cart_item' );
+	remove_filter( 'edd_cart_item_price', 'fundify_edd_cart_item_price', 10, 3 );
+	remove_action( 'init', 'fundify_reverse_purchase_button_location', 12 );
+}
+add_action( 'init', 'fundify_disable_custom_pledging' );
