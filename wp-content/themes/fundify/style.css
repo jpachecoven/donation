@@ -4,7 +4,7 @@ Theme URI: http://astoundify.com
 Author: Astoundify
 Author URI: http://astoundify.com
 Description: Fundify is the first WordPress theme that lets you create your own crowdfunding website. If you have wanted a site like KickStarter or Indiegogo for your own projects, now you can have one using Fundify, the crowdfunding theme for WordPress.
-Version: 1.4.1
+Version: 1.4.2
 License: GNU General Public License
 License URI: license.txt
 Tags: white, green, right-sidebar, fixed-width, custom-background, custom-header, theme-options, full-width-template, featured-images, flexible-header, custom-menu, translation-ready
@@ -79,7 +79,8 @@ input[type=submit]::-moz-focus-inner {
 	left: -9999em !important;
 }
 
-.clearfix:after {
+.clearfix:after,
+.campaign-widget-preview:after {
 	content: ".";
 	display: block;
 	visibility: hidden;
@@ -219,7 +220,8 @@ input[type=file] {
 
 input[type=submit]:not(#searchsubmit),
 .entry-content .button:not(.add_media),
-a.btn-green {
+a.btn-green,
+.edd-add-to-cart {
 	font-weight: 400;
 	text-transform: uppercase;
 	font-family: Lato;
@@ -236,8 +238,13 @@ a.btn-green {
 
 input[type=submit]:not(#searchsubmit),
 .btn-green,
-.entry-content .button:not(.add_media) {
+.entry-content .button:not(.add_media),
+.edd-add-to-cart {
 	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .25);
+}
+
+a.edd-add-to-cart {
+	color: #fff;
 }
 
 .entry-content .button {
@@ -2345,7 +2352,7 @@ a.page-numbers:hover {
 	margin: 0;
 }
 
-.modal .edd_purchase_submit_wrapper input[type="submit"] {
+.modal .edd_purchase_submit_wrapper .edd-add-to-cart {
 	margin: 0;
 }
 
@@ -2449,7 +2456,7 @@ a.page-numbers:hover {
 .modal {
 	position: relative;
 	background: #FFF;
-	padding: 5% 10%;
+	padding: 5%;
 	margin: 0 auto;
 	width: auto;
 	max-width: 500px;
@@ -2498,18 +2505,23 @@ a.page-numbers:hover {
 	box-sizing:         border-box;
 }
 
+#share-widget {
+	padding: 2%;
+	max-width: 800px;
+}
+
 .campaign-widget-preview {
 	margin: 5% auto;
 	width: 90%;
 }
 
 .campaign-widget-preview-widget {
-	width: 50%;
+	width: 40%;
 	float: left;
 }
 
 .campaign-widget-preview-use {
-	width: 50%;
+	width: 60%;
 	float: right;
 }
 

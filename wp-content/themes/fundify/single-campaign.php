@@ -63,7 +63,7 @@ get_header(); ?>
 
 						<li class="backer-count">
 							<h3><?php echo $campaign->backers_count(); ?></h3>
-							<p><?php echo _nx( 'Backer', 'Backers', $campaign->backers_count(), 'number of backers', 'fundify' ); ?></p>
+							<p><?php echo _nx( 'Backer', 'Backers', $campaign->backers_count(), 'number of backers for campaign', 'fundify' ); ?></p>
 						</li>
 						<?php if ( ! $campaign->is_endless() ) : ?>
 						<li class="days-remaining">
@@ -165,7 +165,7 @@ get_header(); ?>
 					
 					<a href="<?php the_permalink(); ?>" target="_blank" class="share-link"><i class="icon-link"></i></a>
 					
-					<a href="#share-widget" class="share-widget fancybox"><i class="icon-code"></i></a>
+					<a href="share-widget" class="share-widget fancybox"><i class="icon-code"></i></a>
 
 					<div id="share-widget" class="modal">
 						<?php get_template_part( 'modal', 'campaign-widget' ); ?>

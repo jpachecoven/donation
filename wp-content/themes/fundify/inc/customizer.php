@@ -459,7 +459,8 @@ function fundify_header_css() {
 		.bar span,
 		input[type=submit]:not(#searchsubmit),
 		.btn-green,
-		.entry-content .button:not(.add_media) {
+		.entry-content .button:not(.add_media),
+		.edd-add-to-cart {
 			background: <?php echo fundify_theme_mod( 'accent_color' ); ?>;
 		}
 

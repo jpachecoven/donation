@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.4.2: July 22, 2013 =
+
+* Fix: Pledge button styling for EDD 1.7.
+* Fix: Campaign tab behavior for Firefox 21+.
+* Fix: Shareable widget now pops up correctly.
+* Fix: A few style tweaks.
+
 = 1.4.1: July 5, 2013 =
 
 * Fix: Make sure the menu reappears after resizing.

@@ -131,8 +131,6 @@ Fundify.Campaign = (function($) {
 
 		tablinks.click(function(e) {
 			if ( $(this).hasClass( 'tabber' ) ) {
-				e.preventDefault();
-
 				var link = $(this).attr( 'href' );
 					
 				tabs.children( 'div' ).hide();

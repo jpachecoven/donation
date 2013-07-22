@@ -97,6 +97,7 @@ function fundify_campaign_contribute_options( $prices, $type, $download_id ) {
 		<br>
 		<h2><?php echo apply_filters( 'fundify_pledge_custom_title', __( 'Or choose one from these options...', 'fundify' ) ); ?></h2>	
 		<!-- DDA -->
+
 		<ul>
 			<?php foreach ( $prices as $key => $price ) : ?>
 				<?php
@@ -281,8 +282,8 @@ add_filter( 'edd_cart_item_price', 'fundify_edd_cart_item_price', 10, 3 );
 function fundify_crowdfunding_settings( $settings ) {
 	$settings[ 'atcf_settings_custom_pledge' ] = array(
 		'id'      => 'atcf_settings_custom_pledge',
-		'name'    => __( 'Custom Pledging', 'atcf' ),
-		'desc'    => __( 'Allow arbitrary amounts to be pledged.', 'atcf' ),
+		'name'    => __( 'Custom Pledging', 'fundify' ),
+		'desc'    => __( 'Allow arbitrary amounts to be pledged.', 'fundify' ),
 		'type'    => 'checkbox',
 		'std'     => 1
 	);

@@ -72,15 +72,24 @@ var CrowdFunding = (function($) {
 		});
 	}
 
+	function endDate() {
+		$( '.atcf-toggle-neverending' ).click(function(e) {
+			e.preventDefault();
+
+			$( 'input[id="length"]' ).attr( 'disabled', ! $( 'input[id="length"]' ).attr( 'disabled' ) );
+		});
+	}
+
 	return {
 		init : function() {
 			addReward();
 			removeReward();
 			validate();
+			endDate();
 		}
 	}
 }(jQuery));
 
 jQuery(document).ready(function($) {
-	CrowdFunding.init();		
+	CrowdFunding.init();
 });
