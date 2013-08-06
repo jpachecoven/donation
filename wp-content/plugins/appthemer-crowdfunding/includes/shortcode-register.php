@@ -4,7 +4,7 @@
  *
  * [appthemer_crowdfunding_register] creates a log in form for users to log in with.
  *
- * @since Appthemer CrowdFunding 1.0
+ * @since Astoundify Crowdfunding 1.0
  */
 
 // Exit if accessed directly
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Register Shortcode
  *
- * @since CrowdFunding 1.0
+ * @since Astoundify Crowdfunding 1.0
  *
  * @return $form
  */
@@ -39,7 +39,7 @@ add_shortcode( 'appthemer_crowdfunding_register', 'atcf_shortcode_register' );
 /**
  * Register form
  *
- * @since CrowdFunding 1.0
+ * @since Astoundify Crowdfunding 1.0
  *
  * @return $form
  */
@@ -70,7 +70,7 @@ function atcf_shortcode_register_form() {
 		<label for="user_pass"><?php _e( 'Password', 'atcf' ); ?></label>
 		<input type="password" name="user_pass" id="user_pass" class="input" value="" />
 	</p>
-	
+
 	<p class="atcf-register-select">
 		<label for="user_joining_as"><?php _e( 'Joining as', 'atcf' ); ?></label>
 			<!-- <label for="user_individual"><?php _e( 'Individual', 'atcf' ); ?></label>
@@ -107,7 +107,7 @@ function atcf_shortcode_register_form() {
 		<label for="user_phone"><?php _e( 'Phone', 'atcf' ); ?></label>
 		<input type="text" name="user_phone" id="user_phone" class="input" value="" />
 	</p>
-		
+
 	<p class="atcf-register-submit">
 		<input type="submit" name="submit" id="submit" class="<?php echo apply_filters( 'atcf_shortcode_register_button_class', 'button-primary' ); ?>" value="<?php _e( 'Register', 'atcf' ); ?>" />
 		<input type="hidden" name="action" value="atcf-register-submit" />
@@ -126,23 +126,22 @@ function atcf_shortcode_register_form() {
 			}		
 		});	
 	</script>
+
 <?php
-	//$crowdfunding = crowdfunding();
-	//wp_enqueue_script( 'atcf-scripts', $crowdfunding->plugin_url . '/assets/js/crowdfunding.js', 'jquery');
 }
 add_action( 'atcf_shortcode_register', 'atcf_shortcode_register_form' );
 
 /**
  * Process registration submission.
  *
- * @since Appthemer CrowdFunding 1.0
+ * @since Astoundify Crowdfunding 1.0
  *
  * @return void
  */
 function atcf_registration_handle() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
-	
+
 	if ( empty( $_POST['action' ] ) || ( 'atcf-register-submit' !== $_POST[ 'action' ] ) )
 		return;
 
@@ -150,13 +149,13 @@ function atcf_registration_handle() {
 		return;
 
 	$errors   = new WP_Error();
-	
+
 	//$nicename = isset( $_POST[ 'displayname' ] ) ? esc_attr( $_POST[ 'displayname' ] ) : null;
 	$email    = isset( $_POST[ 'user_email' ] ) ? esc_attr( $_POST[ 'user_email' ] ) : null;
 	$username = isset( $_POST[ 'user_login' ] ) ? esc_attr( $_POST[ 'user_login' ] ) : null;
 	$password = isset( $_POST[ 'user_pass' ] ) ? esc_attr( $_POST[ 'user_pass' ] ) : null;
 
-	// ADD New fields - Joel Pacheco
+    // ADD New fields - Joel Pacheco
 	$first_name = isset( $_POST[ 'first_name' ] ) ? esc_attr( $_POST[ 'first_name' ] ) : null;
 	$last_name = isset( $_POST[ 'last_name' ] ) ? esc_attr( $_POST[ 'last_name' ] ) : null;
 	$joining_as = isset( $_POST[ 'user_joining_as' ] ) ? esc_attr( $_POST[ 'user_joining_as' ] ) : null;
@@ -188,7 +187,7 @@ function atcf_registration_handle() {
 	// DDA
 	
 	$nicename = esc_attr($first_name . " " . $last_name);	
-
+	
 	/** Check Email */
 	if ( empty( $email ) || ! is_email( $email ) )
 		$errors->add( 'invalid-email', __( 'Please enter a valid email address.', 'atcf' ) );
@@ -199,6 +198,10 @@ function atcf_registration_handle() {
 	/** Check Password */
 	if ( empty( $password ) )
 		$errors->add( 'invalid-password', __( 'Please choose a secure password.', 'atcf' ) );
+
+	/** Check Username */
+	if ( ! empty( $username ) && username_exists( $username ) )
+		$errors->add( 'username-exists', __( 'Sorry, this username is already taken.', 'atcf' ) );
 
 	$errors = apply_filters( 'atcf_register_validate', $errors, $_POST );
 
@@ -212,15 +215,19 @@ function atcf_registration_handle() {
 		$nicename = $username;
 
 	$user_id = atcf_register_user( array(
-		'user_login'           => $username, 
-		'user_pass'            => $password, 
+		'user_login'           => $username,
+		'user_pass'            => $password,
 		'user_email'           => $email,
 		'display_name'         => $nicename,
 	) );
-
+	
 	// ADD New fields - Joel Pacheco
 	atcf_register_user_meta( $user_id, $fields );
 	
+
+	if ( ! empty ( $user_id->errors ) )
+		wp_die( $user_id );
+
 	do_action( 'atcf_register_process_after', $user_id, $_POST );
 
 	$redirect = apply_filters( 'atcf_register_redirect', isset ( $edd_options[ 'profile_page' ] ) ? get_permalink( $edd_options[ 'profile_page' ] ) : home_url() );
@@ -241,7 +248,7 @@ add_action( 'template_redirect', 'atcf_registration_handle' );
  * Extract a bit that actually creates the user so it can be called elsewhere
  * (such as on the campaign creation process)
  *
- * @since Appthemer CrowdFunding 1.0
+ * @since Astoundify Crowdfunding 1.0
  *
  * @return void
  */
@@ -253,7 +260,7 @@ function atcf_register_user( $args = array() ) {
 	);
 
 	$args = wp_parse_args( $args, $defaults );
-	
+
 	$user_id = wp_insert_user($args);
 
 	$secure_cookie = is_ssl() ? true : false;
@@ -280,5 +287,4 @@ function atcf_register_user_meta( $user_id, $args = array() ) {
 		update_user_meta($user_id, $user_meta, $value);
 		
 	}
-	
 }

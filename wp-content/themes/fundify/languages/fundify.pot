@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fundify\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-21 12:48-0500\n"
-"PO-Revision-Date: 2013-07-21 12:49-0500\n"
+"POT-Creation-Date: 2013-07-30 08:55-0500\n"
+"PO-Revision-Date: 2013-07-30 08:55-0500\n"
 "Last-Translator: Spencer Finnell <spencerfinnell@gmail.com>\n"
 "Language-Team: AppThemer <support@appthemer.com>\n"
 "MIME-Version: 1.0\n"
@@ -187,19 +187,19 @@ msgstr ""
 msgid "&copy; Copyright %s %s"
 msgstr ""
 
-#: ../functions.php:71
+#: ../functions.php:72
 msgid "Primary Left Menu"
 msgstr ""
 
-#: ../functions.php:72
+#: ../functions.php:73
 msgid "Primary Right Menu"
 msgstr ""
 
-#: ../functions.php:85
+#: ../functions.php:86
 msgid "Sidebar"
 msgstr ""
 
-#: ../functions.php:95
+#: ../functions.php:96
 #, php-format
 msgid "Footer Column %d"
 msgstr ""

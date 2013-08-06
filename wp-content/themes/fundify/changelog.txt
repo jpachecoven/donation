@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.4.3: July 30, 2013 =
+
+* New: Style support for selecting multiple categories.
+* New: Style support for donation-only campaign types.
+* Fix: Supress errors if EDD is not activated.
+* Fix: A few style tweaks.
+
 = 1.4.2: July 22, 2013 =
 
 * Fix: Pledge button styling for EDD 1.7.

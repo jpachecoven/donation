@@ -40,7 +40,8 @@ function fundify_setup() {
 		'campaign-edit'           => true,
 		'campaign-featured-image' => true,
 		'campaign-video'          => true,
-		'campaign-widget'         => true
+		'campaign-widget'         => true,
+		'campaign-categories'     => true
 	) );
 
 	/**
@@ -126,7 +127,7 @@ function fundify_scripts() {
 		'currency'      => array(
 			'thousands' => $edd_options[ 'thousands_separator' ],
 			'decimal'   => $edd_options[ 'decimal_separator' ],
-			'symbol'    => edd_currency_filter( '' )
+			'symbol'    => fundify_is_crowdfunding() ? edd_currency_filter( '' ) : null
 		)
 	);
 

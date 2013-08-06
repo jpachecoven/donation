@@ -4,7 +4,7 @@
  *
  * [appthemer_crowdfunding_profile] lists relevant information about the current user.
  *
- * @since Appthemer CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  */
 
 // Exit if accessed directly
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Base page/form. All fields are loaded through an action,
  * so the form can be extended for ever, fields can be removed, added, etc.
  *
- * @since CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return $form
  */
@@ -43,7 +43,7 @@ add_shortcode( 'appthemer_crowdfunding_profile', 'atcf_shortcode_profile' );
 /**
  * Profile Information
  *
- * @since CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -70,7 +70,7 @@ add_action( 'atcf_shortcode_profile', 'atcf_shortcode_profile_info', 10, 1 );
 /**
  * Nicename
  *
- * @since CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -87,7 +87,7 @@ add_action( 'atcf_profile_info_fields', 'atcf_profile_info_fields_nicename', 10,
 /**
  * URL
  *
- * @since CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -104,7 +104,7 @@ add_action( 'atcf_profile_info_fields', 'atcf_profile_info_fields_url', 20, 2 );
 /**
  * Contact Methods
  *
- * @since CrowdFunding 0.9
+ * @since Astoundify Crowdfunding 0.9
  *
  * @return void
  */
@@ -125,7 +125,7 @@ add_action( 'atcf_profile_info_fields', 'atcf_profile_info_fields_contactmethods
 /**
  * Biography
  *
- * @since CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -142,7 +142,7 @@ add_action( 'atcf_profile_info_fields', 'atcf_profile_info_fields_bio', 15, 2 );
 /**
  * Campaign History
  *
- * @since CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -150,14 +150,17 @@ function atcf_shortcode_profile_campaigns( $user ) {
 	$campaigns = new WP_Query( array(
 		'post_type'   => 'download',
 		'author' => $user->ID,
-		'post_status' => array( 'publish', 'pending' ),
+		'post_status' => array( 'publish', 'pending', 'draft' ),
 		'nopaging'    => true
 	) );
+
+	if ( ! $campaigns->have_posts() )
+		return;
 ?>
 	<h3 class="atcf-profile-section your-campaigns"><?php _e( 'Your Campaigns', 'atcf' ); ?></h3>
 
 	<ul class="atcf-profile-campaigns">
-	<?php if ( $campaigns->have_posts() ) : while ( $campaigns->have_posts() ) : $campaigns->the_post(); $campaign = atcf_get_campaign( get_post()->ID ); ?>
+	<?php while ( $campaigns->have_posts() ) : $campaigns->the_post(); $campaign = atcf_get_campaign( get_post()->ID ); ?>
 		<li class="atcf-profile-campaign-overview">
 			<?php do_action( 'atcf_profile_campaign_before', $campaign ); ?>
 
@@ -171,6 +174,10 @@ function atcf_shortcode_profile_campaigns( $user ) {
 				<?php do_action( 'atcf_profile_campaign_pending_before', $campaign ); ?>
 				<span class="campaign-awaiting-review"><?php _e( 'This campaign is awaiting review.', 'atcf' ); ?></span>
 				<?php do_action( 'atcf_profile_campaign_pending_after', $campaign ); ?>
+			<?php elseif ( 'draft' == get_post()->post_status ) : ?>
+				<?php do_action( 'atcf_profile_campaign_draft_before', $campaign ); ?>
+				<span class="campaign-awaiting-review"><?php printf( __( 'This campaign is a draft. <a href="%s">Finish editing</a> it and submit it for review.', 'atcf' ), add_query_arg( array( 'edit' => true ), get_permalink( get_post()->ID ) ) ); ?></span>
+				<?php do_action( 'atcf_profile_campaign_draft_after', $campaign ); ?>			
 			<?php else : ?>	
 				<?php do_action( 'atcf_profile_campaign_published_before', $campaign ); ?>
 
@@ -195,16 +202,53 @@ function atcf_shortcode_profile_campaigns( $user ) {
 			<?php endif; ?>
 			<?php do_action( 'atcf_profile_campaign_after', $campaign ); ?>
 		</li>	
-	<?php endwhile; endif; wp_reset_query(); ?>
+	<?php endwhile; wp_reset_query(); ?>
 	</ul>
 <?php
 }
 add_action( 'atcf_shortcode_profile', 'atcf_shortcode_profile_campaigns', 20, 1 );
 
 /**
+ * Campaign Contributinos
+ *
+ * @since Astoundify Crowdfunding 1.4
+ *
+ * @return void
+ */
+function atcf_shortcode_profile_contributions( $user ) {
+	global $edd_options;
+
+	$contributions = edd_get_payments( array(
+		'user' => $user->ID
+	) );
+
+	if ( empty( $contributions ) )
+		return;
+?>
+	<h3 class="atcf-profile-section your-campaigns"><?php _e( 'Your Contributions', 'atcf' ); ?></h3>
+
+	<ul class="atcf-profile-contributinos">
+		<?php foreach ( $contributions as $contribution ) : ?>
+		<?php
+			$payment_data = edd_get_payment_meta( $contribution->ID );
+			$cart         = edd_get_payment_meta_cart_details( $contribution->ID );
+			$key          = edd_get_payment_key( $contribution->ID );
+		?>
+		<li>
+			<?php foreach ( $cart as $download ) : ?>
+			<?php printf( _x( '<a href="%s">%s</a> pledge to <a href="%s">%s</a>', 'price for download (payment history)', 'atcf' ), add_query_arg( 'payment_key', $key, get_permalink( $edd_options[ 'success_page' ] ) ), edd_currency_filter( edd_format_amount( $download[ 'price' ] ) ), get_permalink( $download[ 'id' ] ), $download[ 'name' ] ); ?>
+			<?php endforeach; ?>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+<?php
+}
+add_action( 'atcf_shortcode_profile', 'atcf_shortcode_profile_contributions', 30, 1 );
+
+/**
  * Process shortcode submission.
  *
- * @since Appthemer CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -258,7 +302,7 @@ add_action( 'template_redirect', 'atcf_shortcode_profile_info_process' );
 /**
  * Request Payout
  *
- * @since Appthemer CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -322,7 +366,7 @@ add_action( 'template_redirect', 'atcf_shortcode_profile_request_payout' );
 /**
  * Request Data
  *
- * @since Appthemer CrowdFunding 0.8
+ * @since Astoundify Crowdfunding 0.8
  *
  * @return void
  */
@@ -373,7 +417,7 @@ add_action( 'template_redirect', 'atcf_shortcode_profile_request_data' );
 /**
  * Success Message
  *
- * @since CrowdFunding 0.1-alpha
+ * @since Astoundify Crowdfunding 0.1-alpha
  *
  * @return void
  */

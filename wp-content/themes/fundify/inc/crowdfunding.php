@@ -92,12 +92,13 @@ add_filter( 'pre_get_posts', 'fundify_search_filter' );
 function fundify_campaign_contribute_options( $prices, $type, $download_id ) {
 	$campaign = new ATCF_Campaign( $download_id );
 ?>
-	<div class="edd_price_options <?php echo $campaign->is_active() ? 'active' : 'expired'; ?>">
+	<div class="edd_price_options <?php echo $campaign->is_active() ? 'active' : 'expired'; ?>" <?php echo $campaign->is_donations_only() ? 'style="display: none"' : null; ?>>
+
 		<!-- ADD -->
 		<br>
 		<h2><?php echo apply_filters( 'fundify_pledge_custom_title', __( 'Or choose one from these options...', 'fundify' ) ); ?></h2>	
 		<!-- DDA -->
-
+		
 		<ul>
 			<?php foreach ( $prices as $key => $price ) : ?>
 				<?php
